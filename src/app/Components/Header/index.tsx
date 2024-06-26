@@ -5,6 +5,7 @@ import React from "react";
 function index() {
     return (
         <header className="flex justify-between py-[2vh] px-[4vw] shadow-md shadow-primary">
+            <Link href="/">Home</Link>
             <Link href="/todoApp">Todos</Link>
             <div>
                 <SignedOut>

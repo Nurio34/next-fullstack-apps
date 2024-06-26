@@ -1,6 +1,5 @@
 "use client";
 
-import { store } from "@/store/index";
 import { Provider } from "react-redux";
 import {
     Dispatch,
@@ -35,11 +34,9 @@ function GloablProvider({ children }: Props) {
     const [count, setCount] = useState(0);
 
     return (
-        <Provider store={store}>
-            <Context.Provider value={{ count, setCount }}>
-                {children}
-            </Context.Provider>
-        </Provider>
+        <Context.Provider value={{ count, setCount }}>
+            {children}
+        </Context.Provider>
     );
 }
 
