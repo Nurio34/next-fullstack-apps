@@ -13,8 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tasks {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  description     String
+model Task {
+  id String @id @default(cuid()) @map("_id")
+  title String
+  description String
+  date String
+  isComplated Boolean @default(false)
+  isImportant Boolean @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  userId String
 }

@@ -1,4 +1,5 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import CustomSignoutBtn from "./Components/CustomSignoutBtn";
 
 function Sidebar() {
     return (
@@ -13,6 +14,7 @@ function Sidebar() {
                     <UserButton />
                 </SignedIn>
             </div>
+            <CustomSignoutBtn />
         </nav>
     );
 }
