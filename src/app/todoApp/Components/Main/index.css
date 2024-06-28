@@ -1,0 +1,10 @@
+.Title::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 0.5vh;
+    background: red;
+    z-index: -10;
+    bottom: 0;
+    left: 0;
+}

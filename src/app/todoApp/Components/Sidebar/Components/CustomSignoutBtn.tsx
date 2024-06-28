@@ -8,7 +8,7 @@ function CustomSignoutBtn() {
 
     return (
         <button
-            className="btn btn-error text-error-content"
+            className="btn btn-error text-error-content my-[1vh] mx-[1vw]"
             onClick={() => signOut()}
         >
             Sign Out

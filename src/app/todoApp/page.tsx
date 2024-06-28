@@ -1,14 +1,19 @@
+import { currentUser } from "@clerk/nextjs/server";
 import Main from "./Components/Main";
 import Sidebar from "./Components/Sidebar";
-import GloablProvider from "./Provider";
+import GlobalProvider from "./Provider";
+import { getTasks } from "@/actions/todo";
 
-function TodoApp() {
+async function TodoApp() {
+    const user = await currentUser();
+    const tasks = await getTasks();
+
     return (
-        <div className="grid grid-cols-[1fr,3fr]">
-            <GloablProvider>
-                <Sidebar />
-                <Main />
-            </GloablProvider>
+        <div className="grid lg:grid-cols-[1fr,5fr]">
+            <GlobalProvider>
+                <Sidebar user={JSON.parse(JSON.stringify(user!))} />
+                <Main tasks={tasks} />
+            </GlobalProvider>
         </div>
     );
 }
