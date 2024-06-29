@@ -2,31 +2,48 @@ import { createTask } from "@/actions/todo";
 import { formatDate } from "@/utils/date";
 import { FieldErrors, SubmitHandler, useForm } from "react-hook-form";
 import { TaskType } from "@/types";
+import toast from "react-hot-toast";
+import SubmitBtn from "./SubmitBtn";
+import { useGlobalContext } from "@/app/todoApp/Provider";
+import { IoIosClose } from "react-icons/io";
 
-function TaskForm({
-    isFormDisplay,
-    setIsFormDisplay,
-}: {
-    isFormDisplay: boolean;
-    setIsFormDisplay: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function CreateForm() {
+    const { setTaskContainerStatus } = useGlobalContext();
+
     const { register, handleSubmit, formState, reset } = useForm<TaskType>();
 
-    const { errors } = formState;
+    const { errors, isSubmitting } = formState;
 
     const onSubmit: SubmitHandler<TaskType> = async (data) => {
         const task = { ...data, date: formatDate(data.date) };
-        await createTask(task);
-        setIsFormDisplay(!isFormDisplay);
-        // reset();
+        const newTask = await createTask(task);
+        console.log(newTask);
+
+        setTaskContainerStatus((pre) => ({ ...pre, isCreateFormOpen: false }));
+        toast.success("Task Created");
     };
     // const onError = (errors: FieldErrors<TaskType>) => console.log(errors);
 
+    const submitBtnProps = { isSubmitting };
+
     return (
         <form
-            className="absolute top-0 left-0 w-full h-full py-[1vh] px-[1vw]"
+            className="absolute top-0 left-0 w-full h-full py-[1vh] px-[1vw]
+        grid
+    "
             onSubmit={handleSubmit(onSubmit)}
         >
+            <button
+                type="button"
+                className="btn btn-sm btn-error btn-circle justify-self-end"
+                onClick={() =>
+                    setTaskContainerStatus((pre) => {
+                        return { ...pre, isCreateFormOpen: false };
+                    })
+                }
+            >
+                <IoIosClose size={24} />
+            </button>
             <fieldset>
                 <legend
                     className=" font-semibold text-xl text-center pb-[1vh]"
@@ -88,13 +105,11 @@ function TaskForm({
                             {...register("userId")}
                         />
                     </label>
-                    <button type="submit" className="btn btn-secondary">
-                        Add Task
-                    </button>
+                    <SubmitBtn {...submitBtnProps} />
                 </div>
             </fieldset>
         </form>
     );
 }
 
-export default TaskForm;
+export default CreateForm;

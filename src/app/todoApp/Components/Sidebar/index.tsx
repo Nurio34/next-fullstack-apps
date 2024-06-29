@@ -45,6 +45,8 @@ function Sidebar({ user }: { user: User }) {
                         src={crow}
                         alt="codding crow"
                         fill
+                        sizes="(min-width: 808px) 50vw, 100vw"
+                        priority
                         className=" rounded-full"
                     />
                 </figure>

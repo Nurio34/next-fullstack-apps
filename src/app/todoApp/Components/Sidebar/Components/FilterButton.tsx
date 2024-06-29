@@ -3,7 +3,7 @@ import { FilterBtnType } from "../index";
 import { useGlobalContext } from "@/app/todoApp/Provider";
 
 function FilterButton({ btn }: { btn: FilterBtnType }) {
-    const { filterBy, setFilterBy } = useGlobalContext();
+    const { filterBy, setFilterBy, setIsTitleDisplayed } = useGlobalContext();
     const isCurrentFilter = btn.id === filterBy;
 
     return (
@@ -15,7 +15,11 @@ function FilterButton({ btn }: { btn: FilterBtnType }) {
                 }
                 ${isCurrentFilter && "bg-base-300 border-r-4 border-success"}
             `}
-            onClick={() => setFilterBy(btn.id)}
+            disabled={filterBy === btn.id}
+            onClick={() => {
+                setFilterBy(btn.id);
+                setIsTitleDisplayed(false);
+            }}
         >
             {btn.label}
         </button>

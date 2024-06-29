@@ -3,9 +3,9 @@ import React from "react";
 
 function SigninPage() {
     return (
-        <div>
+        <main className=" min-h-96 grid place-content-center pt-[4vh]">
             <SignIn />
-        </div>
+        </main>
     );
 }
 
