@@ -55,3 +55,42 @@ export const editTask = async (
         revalidatePath("/todoApp");
     }
 };
+
+export const deleteTask = async (id: string): Promise<boolean> => {
+    try {
+        const result = await prisma.task.delete({ where: { id } });
+
+        if (!result) {
+            return false;
+        }
+        return true;
+    } catch (error) {
+        throw new Error("Unexpected error while 'deleteTask()'");
+    } finally {
+        revalidatePath("/todoApp");
+    }
+};
+
+export const updateTask = async ({
+    isComplated,
+    isImportant,
+    id,
+}: {
+    isComplated?: boolean;
+    isImportant?: boolean;
+    id: string;
+}): Promise<Task> => {
+    try {
+        const updatedTask = await prisma.task.update({
+            where: { id },
+            data: {
+                isComplated,
+                isImportant,
+            },
+        });
+        console.log(updatedTask);
+        return updatedTask;
+    } catch (error) {
+        throw new Error("Unexpected Error while 'Updating Task'");
+    }
+};

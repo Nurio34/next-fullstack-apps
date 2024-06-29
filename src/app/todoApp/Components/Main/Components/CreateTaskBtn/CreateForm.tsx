@@ -16,8 +16,13 @@ function CreateForm() {
 
     const onSubmit: SubmitHandler<TaskType> = async (data) => {
         const task = { ...data, date: formatDate(data.date) };
+
         const newTask = await createTask(task);
-        console.log(newTask);
+
+        if (!newTask) {
+            toast.error("An error while Creating Task.Please try again");
+            return;
+        }
 
         setTaskContainerStatus((pre) => ({ ...pre, isCreateFormOpen: false }));
         toast.success("Task Created");
@@ -82,22 +87,38 @@ function CreateForm() {
                             </p>
                         </label>
                     </div>
-                    <div>
-                        <label htmlFor="date">
-                            <input
-                                id="date"
-                                type="date"
-                                className="input input-sm input-secondary w-full"
-                                placeholder="Date..."
-                                {...register("date", {
-                                    required: "Date required",
-                                })}
-                            />
-                        </label>
-                        <p className=" text-xs text-error pt-1">
-                            {errors.date?.message}
-                        </p>
+                    <div className="grid grid-cols-[1fr,auto] gap-[1vw] items-center">
+                        <div>
+                            <label htmlFor="date">
+                                <input
+                                    id="date"
+                                    type="date"
+                                    className="input input-sm input-secondary w-full"
+                                    placeholder="Date..."
+                                    {...register("date", {
+                                        required: "Date required",
+                                    })}
+                                />
+                            </label>
+                            <p className=" text-xs text-error pt-1">
+                                {errors.date?.message}
+                            </p>
+                        </div>
+                        <div>
+                            <label
+                                htmlFor="isImportant"
+                                className="flex items-center gap-[1vw]"
+                            >
+                                <span>Important</span>
+                                <input
+                                    type="checkbox"
+                                    id="isImportant"
+                                    {...register("isImportant")}
+                                />
+                            </label>
+                        </div>
                     </div>
+
                     <label htmlFor="userId">
                         <input
                             type="hidden"

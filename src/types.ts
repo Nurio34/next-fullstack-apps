@@ -4,6 +4,7 @@ export const TaskSchema = z.object({
     title: z.string(),
     description: z.string(),
     date: z.string(),
+    isImportant: z.boolean(),
     userId: z.string(),
 });
 

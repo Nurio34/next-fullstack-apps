@@ -61,8 +61,6 @@ function GloablProvider({ children }: Props) {
         isDeleteModalOpen: false,
     });
 
-    console.log(taskContainerStatus);
-
     return (
         <Context.Provider
             value={{
