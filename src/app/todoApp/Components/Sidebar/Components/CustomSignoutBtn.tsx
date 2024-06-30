@@ -8,10 +8,10 @@ function CustomSignoutBtn() {
 
     return (
         <button
-            className="btn btn-error text-error-content my-[1vh] mx-[1vw]"
+            className="btn btn-sm lg:btn-md btn-error text-error-content my-[1vh] mx-[1vw] text-xs"
             onClick={() => signOut()}
         >
-            Sign Out
+            SignOut
         </button>
     );
 }

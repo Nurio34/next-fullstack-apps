@@ -5,9 +5,58 @@ import { TaskSchema, TaskType } from "@/types";
 import { Task } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-export const getTasks = async (): Promise<Task[]> => {
+export const getTasks = async (userId: string): Promise<Task[]> => {
     try {
-        const data = await prisma.task.findMany();
+        const data = await prisma.task.findMany({
+            where: { userId },
+        });
+        return data;
+    } catch (error) {
+        throw new Error("Unexpected error while 'getTasks()'");
+    }
+};
+export const getComplatedTasks = async (userId: string): Promise<Task[]> => {
+    try {
+        const data = await prisma.task.findMany({
+            where: {
+                isComplated: true,
+                userId,
+            },
+        });
+        return data;
+    } catch (error) {
+        throw new Error("Unexpected error while 'getTasks()'");
+    }
+};
+export const getImportantTasks = async (userId: string): Promise<Task[]> => {
+    try {
+        const data = await prisma.task.findMany({
+            where: {
+                isImportant: true,
+                userId,
+            },
+        });
+        return data;
+    } catch (error) {
+        throw new Error("Unexpected error while 'getTasks()'");
+    }
+};
+export const getTasksOfToday = async (userId: string): Promise<Task[]> => {
+    const today = new Date().toLocaleDateString();
+    const task = await prisma.task.findMany({
+        where: {
+            date: today,
+            userId,
+        },
+    });
+    console.log({ today, task });
+
+    try {
+        const data = await prisma.task.findMany({
+            where: {
+                date: today,
+            },
+        });
         return data;
     } catch (error) {
         throw new Error("Unexpected error while 'getTasks()'");
@@ -71,8 +120,30 @@ export const deleteTask = async (id: string): Promise<boolean> => {
     }
 };
 
-export const updateTask = async ({
+export const updateComplated = async ({
     isComplated,
+    id,
+}: {
+    isComplated?: boolean;
+    isImportant?: boolean;
+    id: string;
+}): Promise<Task> => {
+    try {
+        const updatedTask = await prisma.task.update({
+            where: { id },
+            data: {
+                isComplated: !isComplated,
+            },
+        });
+        return updatedTask;
+    } catch (error) {
+        throw new Error("Unexpected Error while 'Updating Task'");
+    } finally {
+        revalidatePath("/todoApp");
+    }
+};
+
+export const updateImportance = async ({
     isImportant,
     id,
 }: {
@@ -84,13 +155,13 @@ export const updateTask = async ({
         const updatedTask = await prisma.task.update({
             where: { id },
             data: {
-                isComplated,
-                isImportant,
+                isImportant: !isImportant,
             },
         });
-        console.log(updatedTask);
         return updatedTask;
     } catch (error) {
         throw new Error("Unexpected Error while 'Updating Task'");
+    } finally {
+        revalidatePath("/todoApp");
     }
 };

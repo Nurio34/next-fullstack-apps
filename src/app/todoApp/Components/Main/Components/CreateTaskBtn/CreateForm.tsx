@@ -8,7 +8,7 @@ import { useGlobalContext } from "@/app/todoApp/Provider";
 import { IoIosClose } from "react-icons/io";
 
 function CreateForm() {
-    const { setTaskContainerStatus } = useGlobalContext();
+    const { setTaskContainerStatus, userId } = useGlobalContext();
 
     const { register, handleSubmit, formState, reset } = useForm<TaskType>();
 
@@ -122,7 +122,7 @@ function CreateForm() {
                     <label htmlFor="userId">
                         <input
                             type="hidden"
-                            defaultValue={"id_nuri"}
+                            defaultValue={userId}
                             {...register("userId")}
                         />
                     </label>

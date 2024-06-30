@@ -5,6 +5,7 @@ import { Task as TaskType } from "@prisma/client";
 import EditForm from "./Components/EditForm";
 import { useGlobalContext } from "@/app/todoApp/Provider";
 import DeleteModal from "./Components/DeleteModal";
+import { motion } from "framer-motion";
 
 function TaskContainer({ task, index }: { task: TaskType; index: number }) {
     const { taskContainerStatus } = useGlobalContext();
@@ -13,7 +14,21 @@ function TaskContainer({ task, index }: { task: TaskType; index: number }) {
         taskContainerStatus;
 
     return (
-        <li className="relative border-[1px] border-accent shadow-sm shadow-accent py-[1vh] px-[1vw] rounded-md min-h-80">
+        <motion.li
+            className="relative border-[1px] border-accent shadow-sm shadow-accent py-[1vh] px-[1vw] rounded-md min-h-80"
+            initial={{
+                x: -100,
+                // opacity: 0,
+            }}
+            animate={{
+                x: 0,
+                opacity: 1,
+            }}
+            transition={{
+                delay: 0.05 * index,
+            }}
+            layout
+        >
             {!isDeleteModalOpen ? (
                 isEditFormOpen && indexOfTask === index ? (
                     <EditForm task={task} />
@@ -25,7 +40,7 @@ function TaskContainer({ task, index }: { task: TaskType; index: number }) {
             ) : (
                 <Task task={task} index={index} />
             )}
-        </li>
+        </motion.li>
     );
 }
 

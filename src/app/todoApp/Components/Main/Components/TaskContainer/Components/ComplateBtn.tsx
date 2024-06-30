@@ -1,4 +1,6 @@
-import { updateTask } from "@/actions/todo";
+import { updateComplated } from "@/actions/todo";
+import { useGlobalContext } from "@/app/todoApp/Provider";
+import toast from "react-hot-toast";
 
 function ComplateBtn({
     isComplated,
@@ -7,6 +9,8 @@ function ComplateBtn({
     isComplated: boolean;
     id: string;
 }) {
+    const { setTaskContainerStatus } = useGlobalContext();
+
     return (
         <button
             type="button"
@@ -14,8 +18,24 @@ function ComplateBtn({
             ${isComplated ? "btn-success" : "btn-error"}
         `}
             onClick={async () => {
-                const updatedTask = await updateTask({ isComplated, id });
-                console.log(updatedTask);
+                const updatedTask = await updateComplated({ isComplated, id });
+
+                if (!updatedTask) {
+                    toast.error("An Error while Updating Comolate");
+                    return;
+                } else {
+                    if (!isComplated) {
+                        toast.success("Task Complated");
+                    } else {
+                        toast.success("Task marked back as Incomplated");
+                    }
+                    setTaskContainerStatus((pre) => {
+                        return {
+                            ...pre,
+                            isComplatedChange: !pre.isComplatedChange,
+                        };
+                    });
+                }
             }}
         >
             {isComplated ? "Incomplate" : "Complate"}

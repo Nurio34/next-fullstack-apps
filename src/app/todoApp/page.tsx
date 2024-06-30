@@ -2,17 +2,21 @@ import { currentUser } from "@clerk/nextjs/server";
 import Main from "./Components/Main";
 import Sidebar from "./Components/Sidebar";
 import GlobalProvider from "./Provider";
-import { getTasks } from "@/actions/todo";
+import { redirect } from "next/navigation";
 
 async function TodoApp() {
     const user = await currentUser();
-    const tasks = await getTasks();
+    if (!user) redirect("/");
 
     return (
-        <div className="grid lg:grid-cols-[1fr,5fr]">
+        <div
+            className="grid grid-cols-1 relative
+            lg:grid-cols-[1fr,5fr]
+        "
+        >
             <GlobalProvider>
                 <Sidebar user={JSON.parse(JSON.stringify(user!))} />
-                <Main tasks={tasks} />
+                <Main userId={user.id} />
             </GlobalProvider>
         </div>
     );
