@@ -7,9 +7,10 @@ import SubmitBtn from "./SubmitBtn";
 import { Task } from "@prisma/client";
 import { IoIosClose } from "react-icons/io";
 import { useGlobalContext } from "@/app/todoApp/Provider";
+import { useEffect, useRef } from "react";
 
 function EditForm({ task }: { task: Task }) {
-    const { setTaskContainerStatus } = useGlobalContext();
+    const { setTaskContainerStatus, taskContainerStatus } = useGlobalContext();
 
     const { register, handleSubmit, formState, reset } = useForm<
         TaskType & { id: string }

@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 import CreateForm from "./CreateForm";
 import { useGlobalContext } from "@/app/todoApp/Provider";
 import { motion } from "framer-motion";
 
 function CreateTaskBtn({ index }: { index: number }) {
-    const { taskContainerStatus, setTaskContainerStatus } = useGlobalContext();
+    const { taskContainerStatus, setTaskContainerStatus, setCreateBtn } =
+        useGlobalContext();
+
+    const CreateButton = useRef<HTMLLIElement | null>(null);
+
+    useEffect(() => {
+        if (CreateButton.current) {
+            setCreateBtn(CreateButton.current);
+        }
+    }, []);
 
     return (
         <motion.li
@@ -15,6 +24,7 @@ function CreateTaskBtn({ index }: { index: number }) {
             transition={{
                 delay: 0.05 * index,
             }}
+            ref={CreateButton}
         >
             {taskContainerStatus.isCreateFormOpen ? (
                 <CreateForm />
@@ -26,6 +36,7 @@ function CreateTaskBtn({ index }: { index: number }) {
                             ...pre,
                             isEditFormOpen: false,
                             isCreateFormOpen: true,
+                            isDeleteModalOpen: false,
                         }));
                     }}
                 >

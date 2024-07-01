@@ -9,6 +9,9 @@ export const getTasks = async (userId: string): Promise<Task[]> => {
     try {
         const data = await prisma.task.findMany({
             where: { userId },
+            orderBy: {
+                createdAt: "desc",
+            },
         });
         return data;
     } catch (error) {
@@ -21,6 +24,9 @@ export const getComplatedTasks = async (userId: string): Promise<Task[]> => {
             where: {
                 isComplated: true,
                 userId,
+            },
+            orderBy: {
+                createdAt: "desc",
             },
         });
         return data;
@@ -35,6 +41,9 @@ export const getImportantTasks = async (userId: string): Promise<Task[]> => {
                 isImportant: true,
                 userId,
             },
+            orderBy: {
+                createdAt: "desc",
+            },
         });
         return data;
     } catch (error) {
@@ -47,6 +56,9 @@ export const getTasksOfToday = async (userId: string): Promise<Task[]> => {
         where: {
             date: today,
             userId,
+        },
+        orderBy: {
+            createdAt: "asc",
         },
     });
     console.log({ today, task });

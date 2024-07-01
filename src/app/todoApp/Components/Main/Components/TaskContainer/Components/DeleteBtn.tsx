@@ -15,6 +15,7 @@ function DeleteBtn({ index }: { index: number }) {
                         isDeleteModalOpen: true,
                         indexOfTask: index,
                         isEditFormOpen: false,
+                        isCreateFormOpen: false,
                     };
                 })
             }

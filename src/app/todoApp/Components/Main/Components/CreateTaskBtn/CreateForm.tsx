@@ -6,9 +6,17 @@ import toast from "react-hot-toast";
 import SubmitBtn from "./SubmitBtn";
 import { useGlobalContext } from "@/app/todoApp/Provider";
 import { IoIosClose } from "react-icons/io";
+import { useRef } from "react";
 
 function CreateForm() {
-    const { setTaskContainerStatus, userId } = useGlobalContext();
+    const { setTaskContainerStatus, taskContainerStatus, userId } =
+        useGlobalContext();
+
+    const FirstInput = useRef<HTMLInputElement | null>(null);
+
+    if (taskContainerStatus.isCreateFormOpen && FirstInput.current) {
+        FirstInput.current.focus();
+    }
 
     const { register, handleSubmit, formState, reset } = useForm<TaskType>();
 
@@ -66,6 +74,7 @@ function CreateForm() {
                                 {...register("title", {
                                     required: "Title required",
                                 })}
+                                ref={FirstInput}
                             />
                         </label>
                         <p className=" text-xs text-error pt-1">

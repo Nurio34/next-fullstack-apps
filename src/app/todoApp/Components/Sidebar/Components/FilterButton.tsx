@@ -24,7 +24,10 @@ function FilterButton({ btn }: { btn: FilterBtnType }) {
                     !isCurrentFilter &&
                     "border-r-2 border-transparent hover:bg-base-200 hover:border-warning "
                 }
-                ${isCurrentFilter && "bg-base-300 border-r-4 border-success"}
+                ${
+                    isCurrentFilter &&
+                    " bg-neutral text-neutral-content border-r-4 border-success"
+                }
                 lg:rounded-none lg:aspect-auto lg:justify-start
             `}
             disabled={filterBy === btn.id}
@@ -34,7 +37,7 @@ function FilterButton({ btn }: { btn: FilterBtnType }) {
             }}
         >
             <span>{BtnIcons[btn.id]}</span>
-            <span className="hidden lg:block ">{btn.label}</span>
+            <span className="hidden lg:block">{btn.label}</span>
         </button>
     );
 }

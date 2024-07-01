@@ -46,6 +46,8 @@ type GlobalContextType = {
     setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
     userId: string;
     setUserId: Dispatch<SetStateAction<string>>;
+    createBtn: HTMLLIElement | undefined;
+    setCreateBtn: Dispatch<SetStateAction<undefined | HTMLLIElement>>;
 };
 
 type Props = {
@@ -80,6 +82,8 @@ function GloablProvider({ children }: Props) {
         isImportanceChange: false,
     });
 
+    const [userId, setUserId] = useState("");
+
     const [tasks, setTasks] = useState([] as Task[]);
     useEffect(() => {
         if (filterBy === "all") {
@@ -107,7 +111,7 @@ function GloablProvider({ children }: Props) {
             };
             getTasksOfTodayAction();
         }
-    }, [filterBy, taskContainerStatus]);
+    }, [filterBy, taskContainerStatus, userId]);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     useEffect(() => {
@@ -130,7 +134,7 @@ function GloablProvider({ children }: Props) {
         }
     }, []);
 
-    const [userId, setUserId] = useState("");
+    const [createBtn, setCreateBtn] = useState<HTMLLIElement | undefined>();
 
     return (
         <Context.Provider
@@ -147,6 +151,8 @@ function GloablProvider({ children }: Props) {
                 setIsMenuOpen,
                 userId,
                 setUserId,
+                createBtn,
+                setCreateBtn,
             }}
         >
             {children}

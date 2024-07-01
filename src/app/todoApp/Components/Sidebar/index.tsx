@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ReactElement, ReactNode, useEffect, useRef } from "react";
 import CustomSignoutBtn from "./Components/CustomSignoutBtn";
 import Image from "next/image";
 import crow from "@/../public/codding_crow.webp";
@@ -8,6 +8,7 @@ import FilterButton from "./Components/FilterButton";
 import { User } from "@clerk/nextjs/server";
 import OpenSidebarBtn from "./Components/OpenSidebarBtn";
 import { useGlobalContext } from "../../Provider";
+import { UserButton } from "@clerk/nextjs";
 
 export type FilterBtnType = {
     id: "all" | "imp" | "comp" | "now";
@@ -34,21 +35,31 @@ function Sidebar({ user }: { user: User }) {
         },
     ];
 
-    const { isMenuOpen } = useGlobalContext();
-    console.log(user);
+    const { isMenuOpen, setIsMenuOpen } = useGlobalContext();
+
     return (
         <nav
-            className={` border-[1px] border-primary shadow-primary min-h-[85vh] bg-neutral justify-self-stretch
+            className={` border-[1px] border-primary shadow-primary min-h-[85vh] bg-base-300 justify-self-stretch
                     absolute top-[2vh] left-0 z-10 transition-transform ${
                         isMenuOpen
                             ? " translate-x-0 shadow-md"
                             : "-translate-x-full shadow-none"
                     }
-                    lg:my-[2vh] lg:mx-[2vw] grid justify-stretch place-content-between 
-                    lg:bg-none
+                    lg:ml-[2vw] lg:mr-[0] grid justify-stretch place-content-between 
+                    lg:bg-transparent
                 `}
+            onMouseLeave={() => {
+                setTimeout(() => {
+                    setIsMenuOpen(false);
+                }, 1000);
+            }}
+            onBlur={() => {
+                setTimeout(() => {
+                    setIsMenuOpen(false);
+                }, 1000);
+            }}
         >
-            <div className="grid 2xl:grid-cols-2 2xl:justify-center 2xl:items-center gap-[1vw] py-[1vh] px-[1vw]">
+            <div className="grid 2xl:grid-cols-2 2xl:justify-center 2xl:items-center gap-[1vw] py-[1vh] px-[1vw] relative">
                 <figure className=" relative min-w-full aspect-square ">
                     <Image
                         src={user.imageUrl}
@@ -63,7 +74,7 @@ function Sidebar({ user }: { user: User }) {
                     <p className=" text-center 2xl:text-start capitalize">
                         {user.firstName || user.username}
                     </p>
-                    <p className="hidden lg:block lg:w-max truncate capitalize">
+                    <p className="hidden lg:block text-center 2xl:text-start capitalize">
                         {user.lastName}
                     </p>
                 </span>
