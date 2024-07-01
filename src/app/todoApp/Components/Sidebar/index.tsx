@@ -50,12 +50,16 @@ function Sidebar({ user }: { user: User }) {
                 `}
             onMouseLeave={() => {
                 setTimeout(() => {
-                    setIsMenuOpen(false);
+                    if (window.innerWidth < 1024) {
+                        setIsMenuOpen(false);
+                    }
                 }, 1000);
             }}
             onBlur={() => {
                 setTimeout(() => {
-                    setIsMenuOpen(false);
+                    if (window.innerWidth < 1024) {
+                        setIsMenuOpen(false);
+                    }
                 }, 1000);
             }}
         >

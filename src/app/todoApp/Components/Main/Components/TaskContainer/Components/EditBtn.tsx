@@ -10,8 +10,9 @@ function EditBtn({ index }: { index: number }) {
             type="button"
             className="btn btn-sm btn-warning"
             onClick={() =>
-                setTaskContainerStatus(() => {
+                setTaskContainerStatus((pre) => {
                     return {
+                        ...pre,
                         isCreateFormOpen: false,
                         isEditFormOpen: true,
                         indexOfTask: index,
