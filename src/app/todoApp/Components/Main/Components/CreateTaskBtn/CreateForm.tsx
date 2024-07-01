@@ -12,12 +12,6 @@ function CreateForm() {
     const { setTaskContainerStatus, taskContainerStatus, userId } =
         useGlobalContext();
 
-    const FirstInput = useRef<HTMLInputElement | null>(null);
-
-    if (taskContainerStatus.isCreateFormOpen && FirstInput.current) {
-        FirstInput.current.focus();
-    }
-
     const { register, handleSubmit, formState, reset } = useForm<TaskType>();
 
     const { errors, isSubmitting } = formState;
@@ -74,7 +68,6 @@ function CreateForm() {
                                 {...register("title", {
                                     required: "Title required",
                                 })}
-                                ref={FirstInput}
                             />
                         </label>
                         <p className=" text-xs text-error pt-1">
