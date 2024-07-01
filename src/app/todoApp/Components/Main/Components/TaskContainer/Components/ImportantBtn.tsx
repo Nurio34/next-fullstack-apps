@@ -14,7 +14,7 @@ function ImportantBtn({
     return (
         <button
             type="button"
-            className={`btn btn-sm btn-accent
+            className={`btn btn-sm btn-accent  text-xs
             ${isImportant ? "btn-secondary" : "btn-info"}
         `}
             onClick={async () => {

@@ -37,6 +37,8 @@ function Sidebar({ user }: { user: User }) {
 
     const { isMenuOpen, setIsMenuOpen } = useGlobalContext();
 
+    const time = useRef<any>();
+
     return (
         <nav
             className={` border-[1px] border-primary shadow-primary min-h-[85vh] bg-base-300 justify-self-stretch
@@ -49,14 +51,18 @@ function Sidebar({ user }: { user: User }) {
                     lg:bg-transparent
                 `}
             onMouseLeave={() => {
-                setTimeout(() => {
+                clearTimeout(time.current);
+
+                time.current = setTimeout(() => {
                     if (window.innerWidth < 1024) {
                         setIsMenuOpen(false);
                     }
                 }, 1000);
             }}
             onBlur={() => {
-                setTimeout(() => {
+                clearTimeout(time.current);
+
+                time.current = setTimeout(() => {
                     if (window.innerWidth < 1024) {
                         setIsMenuOpen(false);
                     }

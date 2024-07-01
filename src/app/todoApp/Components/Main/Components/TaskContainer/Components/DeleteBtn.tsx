@@ -20,7 +20,7 @@ function DeleteBtn({ index }: { index: number }) {
                 })
             }
         >
-            <MdDeleteOutline size={24} />
+            <MdDeleteOutline size={16} />
         </button>
     );
 }

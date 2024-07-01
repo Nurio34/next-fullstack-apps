@@ -14,7 +14,7 @@ function ComplateBtn({
     return (
         <button
             type="button"
-            className={`btn btn-sm
+            className={`btn btn-sm  text-xs
             ${isComplated ? "btn-success" : "btn-error"}
         `}
             onClick={async () => {

@@ -21,7 +21,7 @@ function EditBtn({ index }: { index: number }) {
                 })
             }
         >
-            <CiEdit size={24} />
+            <CiEdit size={16} />
         </button>
     );
 }
