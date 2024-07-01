@@ -10,7 +10,7 @@ function DeleteModal({ task }: { task: TaskType }) {
     return (
         <div className="h-full grid justify-items-center gap-[2vh]">
             <p className=" self-center font-semibold">
-                Are you sure to 'Delete' this task ?
+                Are you sure to Delete this task ?
             </p>
             <div className=" flex gap-[2vw]">
                 <button

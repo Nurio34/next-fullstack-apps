@@ -15,13 +15,13 @@ function Main({ userId }: { userId: string }) {
 
     useEffect(() => {
         setIsTitleDisplayed(true);
-    }, [isTitleDisplayed]);
+    }, [isTitleDisplayed, setIsTitleDisplayed]);
 
     useEffect(() => {
         if (userId) {
             setUserId(userId);
         }
-    }, []);
+    }, [userId, setUserId]);
 
     return (
         <main

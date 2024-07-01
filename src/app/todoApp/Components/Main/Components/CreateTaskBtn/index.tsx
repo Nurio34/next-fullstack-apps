@@ -14,7 +14,7 @@ function CreateTaskBtn({ index }: { index: number }) {
         if (CreateButton.current) {
             setCreateBtn(CreateButton.current);
         }
-    }, []);
+    }, [setCreateBtn]);
 
     return (
         <motion.li
