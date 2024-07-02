@@ -1,7 +1,7 @@
-import { createTask } from "@/actions/todo";
+import { createTask } from "@/app/todoApp/actions/todo";
 import { formatDate } from "@/utils/date";
 import { FieldErrors, SubmitHandler, useForm } from "react-hook-form";
-import { TaskType } from "@/types";
+import { TaskType } from "@/app/todoApp/types";
 import toast from "react-hot-toast";
 import SubmitBtn from "./SubmitBtn";
 import { useGlobalContext } from "@/app/todoApp/Provider";

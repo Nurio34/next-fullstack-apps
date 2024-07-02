@@ -1,8 +1,8 @@
-import CldUploadButtonComponent from "./Components/CldUploadButtonComponent";
 import Logo from "./Components/Logo";
+import ButtonsComponent from "./Components/ButtonsComponent";
 import "./index.css";
 
-function index() {
+function Header() {
     return (
         <header
             id="Google_Photos_Header"
@@ -14,9 +14,9 @@ function index() {
             }
         >
             <Logo />
-            <CldUploadButtonComponent />
+            <ButtonsComponent />
         </header>
     );
 }
 
-export default index;
+export default Header;

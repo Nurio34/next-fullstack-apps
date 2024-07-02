@@ -1,7 +1,7 @@
-import { createTask, editTask } from "@/actions/todo";
+import { createTask, editTask } from "@/app/todoApp/actions/todo";
 import { formatDate, reFormatDate } from "@/utils/date";
 import { FieldErrors, SubmitHandler, useForm } from "react-hook-form";
-import { TaskType } from "@/types";
+import { TaskType } from "@/app/todoApp/types";
 import toast from "react-hot-toast";
 import SubmitBtn from "./SubmitBtn";
 import { Task } from "@prisma/client";
@@ -30,7 +30,6 @@ function EditForm({ task }: { task: Task }) {
         const taskToEdit = { ...data, date: formatDate(data.date) };
 
         const editedTask = await editTask(taskToEdit);
-        console.log(editedTask);
 
         setTaskContainerStatus((pre) => ({ ...pre, isEditFormOpen: false }));
         toast.success("Task Updated");

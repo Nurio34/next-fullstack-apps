@@ -1,14 +1,12 @@
 "use client";
 
-import React, { ReactElement, ReactNode, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import CustomSignoutBtn from "./Components/CustomSignoutBtn";
 import Image from "next/image";
-import crow from "@/../public/codding_crow.webp";
 import FilterButton from "./Components/FilterButton";
 import { User } from "@clerk/nextjs/server";
 import OpenSidebarBtn from "./Components/OpenSidebarBtn";
 import { useGlobalContext } from "../../Provider";
-import { UserButton } from "@clerk/nextjs";
 
 export type FilterBtnType = {
     id: "all" | "imp" | "comp" | "now";

@@ -1,5 +1,4 @@
 import { useGlobalContext } from "@/app/todoApp/Provider";
-import { useEffect, useState } from "react";
 
 function Title() {
     const { filterBy } = useGlobalContext();

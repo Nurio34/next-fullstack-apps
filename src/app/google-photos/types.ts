@@ -14,3 +14,15 @@ export type ResourceType = {
     url: string;
     secure_url: string;
 };
+
+export type OptionsType = {
+    initialResources?: Array<ResourceType>;
+    disableFetch?: boolean;
+    tag?: string;
+};
+
+export type ActionButtonType = {
+    id: string;
+    icon: React.JSX.Element;
+    color: string;
+};

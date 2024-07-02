@@ -1,7 +1,7 @@
 import React from "react";
 import { Task as TaskType } from "@prisma/client";
 import { useGlobalContext } from "@/app/todoApp/Provider";
-import { deleteTask } from "@/actions/todo";
+import { deleteTask } from "@/app/todoApp/actions/todo";
 import toast from "react-hot-toast";
 
 function DeleteModal({ task }: { task: TaskType }) {

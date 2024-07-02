@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CreateTaskBtn from "./Components/CreateTaskBtn";
-import { Task as TaskType } from "@prisma/client";
 import TaskContainer from "./Components/TaskContainer";
 import "./index.css";
 import Title from "./Components/Title";

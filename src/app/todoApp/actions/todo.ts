@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/db";
-import { TaskSchema, TaskType } from "@/types";
+import { TaskSchema, TaskType } from "@/app/todoApp/types";
 import { Task } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
@@ -61,7 +61,6 @@ export const getTasksOfToday = async (userId: string): Promise<Task[]> => {
             createdAt: "asc",
         },
     });
-    console.log({ today, task });
 
     try {
         const data = await prisma.task.findMany({
@@ -74,7 +73,6 @@ export const getTasksOfToday = async (userId: string): Promise<Task[]> => {
         throw new Error("Unexpected error while 'getTasks()'");
     }
 };
-
 export const createTask = async (task: TaskType): Promise<Task> => {
     try {
         const zodResult = TaskSchema.safeParse(task);
@@ -93,7 +91,6 @@ export const createTask = async (task: TaskType): Promise<Task> => {
         revalidatePath("/todoApp");
     }
 };
-
 export const editTask = async (
     task: TaskType & { id: string },
 ): Promise<Task> => {
@@ -116,7 +113,6 @@ export const editTask = async (
         revalidatePath("/todoApp");
     }
 };
-
 export const deleteTask = async (id: string): Promise<boolean> => {
     try {
         const result = await prisma.task.delete({ where: { id } });
@@ -131,7 +127,6 @@ export const deleteTask = async (id: string): Promise<boolean> => {
         revalidatePath("/todoApp");
     }
 };
-
 export const updateComplated = async ({
     isComplated,
     id,
@@ -154,7 +149,6 @@ export const updateComplated = async ({
         revalidatePath("/todoApp");
     }
 };
-
 export const updateImportance = async ({
     isImportant,
     id,

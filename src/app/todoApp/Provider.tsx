@@ -5,7 +5,7 @@ import {
     getImportantTasks,
     getTasks,
     getTasksOfToday,
-} from "@/actions/todo";
+} from "@/app/todoApp/actions/todo";
 import { Task } from "@prisma/client";
 import {
     Dispatch,

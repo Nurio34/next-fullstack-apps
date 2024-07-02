@@ -1,4 +1,4 @@
-import { updateComplated } from "@/actions/todo";
+import { updateComplated } from "@/app/todoApp/actions/todo";
 import { useGlobalContext } from "@/app/todoApp/Provider";
 import toast from "react-hot-toast";
 

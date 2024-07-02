@@ -1,5 +1,4 @@
 import { useGlobalContext } from "@/app/todoApp/Provider";
-import { Dispatch, SetStateAction } from "react";
 import { CiEdit } from "react-icons/ci";
 
 function EditBtn({ index }: { index: number }) {

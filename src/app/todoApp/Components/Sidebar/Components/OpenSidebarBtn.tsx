@@ -1,6 +1,5 @@
 import { useGlobalContext } from "@/app/todoApp/Provider";
 import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
 
 function OpenSidebarBtn() {
     const { setIsMenuOpen, isMenuOpen } = useGlobalContext();

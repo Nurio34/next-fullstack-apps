@@ -1,4 +1,4 @@
-import { updateImportance } from "@/actions/todo";
+import { updateImportance } from "@/app/todoApp/actions/todo";
 import { useGlobalContext } from "@/app/todoApp/Provider";
 import toast from "react-hot-toast";
 

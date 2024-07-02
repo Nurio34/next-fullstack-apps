@@ -3,6 +3,7 @@ import Gallery from "./Components/Gallery";
 import { ResourceType } from "./types";
 import Header from "./Components/Header";
 import ImagesSlide from "./Components/ImagesSlide/page";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
@@ -12,13 +13,13 @@ cloudinary.config({
 
 async function GooglePhotos() {
     const { resources }: { resources: ResourceType[] } =
-        await cloudinary.api.resources();
+        await cloudinary.api.resources_by_tag("hotel");
 
     return (
         <main>
-            <Header />
             {/* <ImagesSlide resources={resources} /> */}
             <Gallery resources={resources} />
+            <ReactQueryDevtools />
         </main>
     );
 }
