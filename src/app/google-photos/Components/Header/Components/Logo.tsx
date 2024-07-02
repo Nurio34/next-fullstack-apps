@@ -1,4 +1,4 @@
-import { CloudinaryIcon } from "@/app/google-photos/lib/icons";
+import { CloudinaryIcon } from "@/lib/icons";
 import Link from "next/link";
 
 function Logo() {

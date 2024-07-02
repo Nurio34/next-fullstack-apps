@@ -4,8 +4,6 @@ import { ResourceType } from "@/app/google-photos/types";
 import React from "react";
 import { CldImage } from "next-cloudinary";
 function Media({ resource, index }: { resource: ResourceType; index: number }) {
-    console.log(resource);
-
     return (
         <figure className={`relative aspect-square`}>
             <CldImage

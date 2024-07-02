@@ -6,7 +6,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 function CldUploadButtonComponent() {
     return (
         <CldUploadButton
-            uploadPreset="<Upload Preset>"
+            signatureEndpoint="/google-photos/api/sign-cloudinary-params"
             className="flex gap-[1vw] items-center"
         >
             <FaCloudUploadAlt size={24} className=" text-primary" />

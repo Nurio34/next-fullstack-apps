@@ -1,6 +1,8 @@
 import { v2 as cloudinary } from "cloudinary";
 import Gallery from "./Components/Gallery";
 import { ResourceType } from "./types";
+import Header from "./Components/Header";
+import ImagesSlide from "./Components/ImagesSlide/page";
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
@@ -13,9 +15,11 @@ async function GooglePhotos() {
         await cloudinary.api.resources();
 
     return (
-        <div>
+        <main>
+            <Header />
+            {/* <ImagesSlide resources={resources} /> */}
             <Gallery resources={resources} />
-        </div>
+        </main>
     );
 }
 

@@ -1,0 +1,13 @@
+#Google_Photos_Slide_Image {
+    position: absolute;
+    animation: slide 10s var(--delay) linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        right: calc(0px - calc(var(--startingPoint) * 32));
+    }
+    100% {
+        right: calc(100% + calc(var(--road) * 32));
+    }
+}
