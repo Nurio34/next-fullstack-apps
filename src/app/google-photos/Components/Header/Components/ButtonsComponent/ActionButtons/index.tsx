@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ReactNode } from "react";
 import { CiCircleInfo, CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";

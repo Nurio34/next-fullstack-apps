@@ -4,6 +4,7 @@ import { ResourceType } from "./types";
 import Header from "./Components/Header";
 import ImagesSlide from "./Components/ImagesSlide/page";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Client from "./Client";
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
@@ -18,8 +19,7 @@ async function GooglePhotos() {
     return (
         <main>
             {/* <ImagesSlide resources={resources} /> */}
-            <Gallery resources={resources} />
-            <ReactQueryDevtools />
+            <Client resources={resources} />
         </main>
     );
 }

@@ -19,7 +19,7 @@ function Media({ resource, index }: { resource: ResourceType; index: number }) {
                 <CldImage
                     priority={index === 0 || index === 1 || index === 2}
                     key={resource.asset_id}
-                    src={resource.secure_url}
+                    src={resource.public_id}
                     alt={resource.display_name}
                     fill
                     sizes="(min-width: 1200px) 320px, (min-width: 768px) calc(33.33vw - 2vw), (min-width: 480px) calc(50vw - 2vw), 100vw"
