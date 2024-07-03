@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <ClerkProvider>
-            <html lang="en" data-theme="light">
+            <html lang="en" data-theme="dark">
                 <body className={inter.className}>
                     <Providers>
                         <Header />

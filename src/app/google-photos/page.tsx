@@ -1,10 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
-import Gallery from "./Components/Gallery";
-import { ResourceType } from "./types";
-import Header from "./Components/Header";
-import ImagesSlide from "./Components/ImagesSlide/page";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Client from "./Client";
+import { CloudinaryResourceType, ResourceType } from "./types";
+import GooglePhotosClient from "./Client";
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
@@ -13,15 +9,10 @@ cloudinary.config({
 });
 
 async function GooglePhotos() {
-    const { resources }: { resources: ResourceType[] } =
+    const { resources }: { resources: CloudinaryResourceType[] } =
         await cloudinary.api.resources_by_tag("hotel");
 
-    return (
-        <main>
-            {/* <ImagesSlide resources={resources} /> */}
-            <Client resources={resources} />
-        </main>
-    );
+    return <GooglePhotosClient resources={resources} />;
 }
 
 export default GooglePhotos;

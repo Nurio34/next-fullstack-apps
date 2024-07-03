@@ -13,12 +13,15 @@ async function SingleMediaPage({ params }: { params: { asset_id: string } }) {
     );
     const resource = resources[0];
 
-    const mainMaxHeight = 1014;
+    const mainMaxHeight = 768;
 
     return (
-        <main style={{ minHeight: `${mainMaxHeight}px` }}>
+        <section
+            className="relative"
+            style={{ minHeight: `${mainMaxHeight}px` }}
+        >
             <ClientPage resource={resource} />
-        </main>
+        </section>
     );
 }
 

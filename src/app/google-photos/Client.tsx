@@ -1,17 +1,19 @@
 "use client";
+import { store } from "@/providers/reduxjs-provider";
 import Gallery from "./Components/Gallery";
-import { ResourceType } from "./types";
-import Header from "./Components/Header";
+import { CloudinaryResourceType } from "./types";
 import { Provider } from "react-redux";
-import { store } from "./store";
 
-function Client({ resources }: { resources: ResourceType }) {
+function GooglePhotosClient({
+    resources,
+}: {
+    resources: CloudinaryResourceType[];
+}) {
     return (
         <Provider store={store}>
-            <Header />
             <Gallery resources={resources} />
         </Provider>
     );
 }
 
-export default Client;
+export default GooglePhotosClient;

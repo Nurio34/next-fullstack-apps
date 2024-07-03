@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useResources } from "../../hooks/useResources";
-import { ResourceType } from "../../types";
+import { CloudinaryResourceType, ResourceType } from "../../types";
 import Media from "./Components/Media";
 import Skeleton from "./Components/Skeleton";
 
 function Gallery({
     resources: initialResources,
 }: {
-    resources: ResourceType[];
+    resources: CloudinaryResourceType[];
 }) {
     const { resources, isLoading, isError } = useResources({
         initialResources,

@@ -1,23 +1,49 @@
 import {
     useAppDispatch,
     useAppSelector,
-} from "@/app/google-photos/store/hooks";
-import { toggleTab } from "@/app/google-photos/store/slices/tab";
+} from "@/providers/reduxjs-provider/hooks";
+import EditTab from "./EditTab";
+import InfoTab from "./InfoTab";
+import DeleteTab from "./DeleteTab";
+import TabActionButtons from "./TabActionButtons";
 
 function TabComponent() {
-    const { isOpen } = useAppSelector((s) => s.tab);
+    const { isOpen, activeTab } = useAppSelector((s) => s.tab);
     const dispatch = useAppDispatch();
+
+    const tabs = [
+        {
+            id: "edit",
+            component: <EditTab />,
+        },
+        {
+            id: "info",
+            component: <InfoTab />,
+        },
+        {
+            id: "delete",
+            component: <DeleteTab />,
+        },
+    ];
 
     return (
         <aside
-            className={`absolute transition-transform right-0 top-0 min-w-96 h-full bg-base-300
+            className={`absolute transition-transform right-0 top-0 min-w-96 h-full bg-base-300 py-[1vh] px-[2vw]
+                flex flex-col justify-between
                 ${isOpen ? " translate-x-0" : "translate-x-full"}
         `}
         >
-            TabComponent
-            <button type="button" onClick={() => dispatch(toggleTab())}>
-                Close
-            </button>
+            <ul>
+                {tabs.map((tab) => {
+                    return (
+                        <li key={tab.id}>
+                            {activeTab === tab.id && tab.component}{" "}
+                        </li>
+                    );
+                })}
+            </ul>
+
+            <TabActionButtons />
         </aside>
     );
 }

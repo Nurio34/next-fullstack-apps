@@ -1,3 +1,5 @@
+import { CldImageProps } from "next-cloudinary";
+
 export type ResourceType = {
     asset_id: string;
     public_id: string;
@@ -13,18 +15,6 @@ export type ResourceType = {
     display_name: string;
     url: string;
     secure_url: string;
-};
-
-export type OptionsType = {
-    initialResources?: Array<ResourceType>;
-    disableFetch?: boolean;
-    tag?: string;
-};
-
-export type ActionButtonType = {
-    id: string;
-    icon: React.JSX.Element;
-    color: string;
 };
 
 export type CloudinaryResourceType = {
@@ -62,3 +52,39 @@ export type CloudinaryResourceType = {
 
     [futureKey: string]: any;
 };
+
+export type OptionsType = {
+    initialResources?: Array<CloudinaryResourceType>;
+    disableFetch?: boolean;
+    tag?: string;
+};
+
+export type ActionButtonType = {
+    id: ActiveTabType;
+    icon: React.JSX.Element;
+    color: string;
+};
+
+export type ActiveTabType = "edit" | "info" | "delete" | "none";
+
+export type EditTabIdType = "enhance" | "crop" | "filter";
+
+export type EditTabType = {
+    id: EditTabIdType;
+    icon: JSX.Element;
+    tab: JSX.Element;
+};
+
+export type EnhancementType =
+    | "none"
+    | "improve"
+    | "restore"
+    | "remove-background";
+
+export type EnhanceButtonType = {
+    id: EnhancementType;
+    icon: JSX.Element;
+    label: string;
+};
+
+export type TransformationsType = Omit<CldImageProps, "src" | "alt">;

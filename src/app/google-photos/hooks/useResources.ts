@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { OptionsType, ResourceType } from "../types";
+import { CloudinaryResourceType, OptionsType, ResourceType } from "../types";
 import axios from "axios";
 import { CloudinaryUploadWidgetInfo } from "next-cloudinary";
 
@@ -12,7 +12,7 @@ export const useResources = (options?: OptionsType) => {
         isError,
     } = useQuery({
         queryKey: ["resources", options?.tag],
-        queryFn: async (): Promise<ResourceType[] | undefined> => {
+        queryFn: async (): Promise<CloudinaryResourceType[] | undefined> => {
             const { data } = await axios("/google-photos/api/resources");
 
             return data.data;
@@ -29,7 +29,7 @@ export const useResources = (options?: OptionsType) => {
                 "resources",
                 String(process.env.NEXT_PUBLIC_CLOUDINARY_LIBRARY_TAG),
             ],
-            (old: ResourceType[]) => {
+            (old: CloudinaryResourceType[]) => {
                 return [...resultsArray, ...old];
             },
         );

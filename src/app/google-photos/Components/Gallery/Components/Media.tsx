@@ -1,12 +1,21 @@
 "use client";
 
-import { ResourceType } from "@/app/google-photos/types";
+import {
+    CloudinaryResourceType,
+    ResourceType,
+} from "@/app/google-photos/types";
 import React from "react";
 import { CldImage } from "next-cloudinary";
 import Link from "next/link";
-function Media({ resource, index }: { resource: ResourceType; index: number }) {
+function Media({
+    resource,
+    index,
+}: {
+    resource: CloudinaryResourceType;
+    index: number;
+}) {
     return (
-        <figure className={`relative aspect-square`}>
+        <figure className={` aspect-square`}>
             <label htmlFor="check" className=" absolute z-10 m-[1vh]">
                 <input
                     type="checkbox"
@@ -15,7 +24,10 @@ function Media({ resource, index }: { resource: ResourceType; index: number }) {
                     className=" checkbox checkbox-sm checkbox-primary rounded-full "
                 />
             </label>
-            <Link href={`/google-photos/${resource.asset_id}`}>
+            <Link
+                href={`/google-photos/${resource.asset_id}`}
+                className="block relative w-full aspect-square"
+            >
                 <CldImage
                     priority={index === 0 || index === 1 || index === 2}
                     key={resource.asset_id}
