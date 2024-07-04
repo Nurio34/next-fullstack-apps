@@ -1,4 +1,4 @@
-import { EditTabType } from "@/app/google-photos/types";
+import { CloudinaryResourceType, EditTabType } from "@/app/google-photos/types";
 import { CiCrop } from "react-icons/ci";
 import { FaMagic } from "react-icons/fa";
 import { IoIosColorFilter } from "react-icons/io";
@@ -8,7 +8,7 @@ import EnhanceTab from "./Components/ActiveEditTab/Components/EnhanceTab";
 import CropTab from "./Components/ActiveEditTab/Components/CropTab";
 import FilterTab from "./Components/ActiveEditTab/Components/FilterTab";
 
-function EditTab() {
+function EditTab({ resource }: { resource: CloudinaryResourceType }) {
     const editTabs: EditTabType[] = [
         {
             id: "enhance",
@@ -18,12 +18,12 @@ function EditTab() {
         {
             id: "crop",
             icon: <CiCrop />,
-            tab: <CropTab />,
+            tab: <CropTab resource={resource} />,
         },
         {
             id: "filter",
             icon: <IoIosColorFilter />,
-            tab: <FilterTab />,
+            tab: <FilterTab resource={resource} />,
         },
     ];
 

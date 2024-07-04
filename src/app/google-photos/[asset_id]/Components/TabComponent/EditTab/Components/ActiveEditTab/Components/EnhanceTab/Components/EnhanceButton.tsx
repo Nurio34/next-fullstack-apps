@@ -5,25 +5,30 @@ import {
 } from "@/providers/reduxjs-provider/hooks";
 import {
     setEnhancement,
-    setTransformations,
+    setEnhanceTransformations,
 } from "@/providers/reduxjs-provider/slices/tab";
 
 function EnhanceButton({ btn }: { btn: EnhanceButtonType }) {
-    const { enhancement } = useAppSelector((s) => s.tab);
+    const { enhancement, transformations } = useAppSelector((s) => s.tab);
     const dispatch = useAppDispatch();
 
     return (
         <li>
             <button
                 className={`flex btn w-full justify-start gap-x-[2vw]
+                       
                         ${
-                            enhancement === btn.id &&
-                            "btn-secondary text-secondary-content"
+                            transformations[
+                                btn.id as
+                                    | "improve"
+                                    | "restore"
+                                    | "removeBackground"
+                            ] && "btn-secondary text-secondary-content"
                         }
                     `}
                 onClick={() => {
                     dispatch(setEnhancement(btn.id));
-                    dispatch(setTransformations(btn.id));
+                    dispatch(setEnhanceTransformations(btn.id));
                 }}
             >
                 <span>{btn.icon}</span>

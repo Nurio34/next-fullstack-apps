@@ -10,7 +10,7 @@ function ClientPage({ resource }: { resource: CloudinaryResourceType }) {
     return (
         <Provider store={store}>
             <Media resource={resource} />
-            <TabComponent />
+            <TabComponent resource={resource} />
         </Provider>
     );
 }

@@ -13,8 +13,7 @@ async function SingleMediaPage({ params }: { params: { asset_id: string } }) {
     );
     const resource = resources[0];
 
-    const mainMaxHeight = 768;
-
+    const mainMaxHeight = 1020;
     return (
         <section
             className="relative"

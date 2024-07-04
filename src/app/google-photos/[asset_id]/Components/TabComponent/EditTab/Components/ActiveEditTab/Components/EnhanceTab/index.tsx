@@ -22,7 +22,7 @@ function EnhanceTab() {
             label: "Restore",
         },
         {
-            id: "remove-background",
+            id: "removeBackground",
             icon: <FaBackspace size={24} />,
             label: "Remove Background",
         },

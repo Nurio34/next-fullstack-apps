@@ -1,11 +1,27 @@
 import { CloudinaryResourceType } from "@/app/google-photos/types";
-import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
+import {
+    useAppDispatch,
+    useAppSelector,
+} from "@/providers/reduxjs-provider/hooks";
+import { setCropTransformations } from "@/providers/reduxjs-provider/slices/tab";
 import { CldImage } from "next-cloudinary";
+import { sources } from "next/dist/compiled/webpack/webpack";
 import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
-import React from "react";
+import React, { useEffect } from "react";
 
 function Media({ resource }: { resource: CloudinaryResourceType }) {
     const { transformations } = useAppSelector((s) => s.tab);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(
+            setCropTransformations({
+                cropType: "none",
+                width: resource.width,
+                height: resource.height,
+            }),
+        );
+    }, []);
 
     const shimmer = (w: number, h: number) => `
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -36,9 +52,10 @@ function Media({ resource }: { resource: CloudinaryResourceType }) {
             key={resource.asset_id}
             src={resource.public_id}
             alt={resource.display_name}
-            fill
-            sizes="(min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px,"
-            className=" absolute top-0 left-0 -z-10"
+            width={resource.width}
+            height={resource.height}
+            sizes="(min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+            className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
             {...transformations}
             placeholder={dataUrl}
         />

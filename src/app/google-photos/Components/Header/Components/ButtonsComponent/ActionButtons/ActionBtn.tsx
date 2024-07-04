@@ -17,7 +17,9 @@ function ActionBtn({ btn }: { btn: ActionButtonType }) {
         <li>
             <button
                 type="button"
-                className={`btn btn-sm btn-circle `}
+                className={`btn btn-sm btn-circle ${
+                    activeTab === btn.id && " btn-accent"
+                } `}
                 onClick={() => {
                     if (activeTab === btn.id) {
                         dispatch(toggleTab(false));

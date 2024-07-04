@@ -1,20 +1,17 @@
-import {
-    useAppDispatch,
-    useAppSelector,
-} from "@/providers/reduxjs-provider/hooks";
+import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
 import EditTab from "./EditTab";
 import InfoTab from "./InfoTab";
 import DeleteTab from "./DeleteTab";
 import TabActionButtons from "./TabActionButtons";
+import { CloudinaryResourceType } from "@/app/google-photos/types";
 
-function TabComponent() {
+function TabComponent({ resource }: { resource: CloudinaryResourceType }) {
     const { isOpen, activeTab } = useAppSelector((s) => s.tab);
-    const dispatch = useAppDispatch();
 
     const tabs = [
         {
             id: "edit",
-            component: <EditTab />,
+            component: <EditTab resource={resource} />,
         },
         {
             id: "info",
@@ -43,7 +40,7 @@ function TabComponent() {
                 })}
             </ul>
 
-            <TabActionButtons />
+            <TabActionButtons src={resource.public_id} />
         </aside>
     );
 }

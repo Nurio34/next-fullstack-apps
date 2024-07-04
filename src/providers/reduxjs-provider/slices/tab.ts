@@ -3,8 +3,13 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../index";
 import {
     ActiveTabType,
+    CropObjType,
+    CropType,
+    DefaultTransformationsType,
     EditTabIdType,
     EnhancementType,
+    FilterObjectType,
+    FilterType,
     TransformationsType,
 } from "@/app/google-photos/types";
 
@@ -14,14 +19,20 @@ type TabStateType = {
     activeEditTab: EditTabIdType;
     enhancement: EnhancementType;
     transformations: TransformationsType;
+    cropObj?: CropObjType;
+    filter: FilterType;
 };
 
 const initialState: TabStateType = {
     isOpen: false,
-    activeTab: "edit",
+    activeTab: "none",
     activeEditTab: "enhance",
     enhancement: "none",
     transformations: {},
+    cropObj: {
+        cropType: "none",
+    },
+    filter: "none",
 };
 
 export const tabSlice = createSlice({
@@ -40,16 +51,83 @@ export const tabSlice = createSlice({
         setEnhancement: (state, action: PayloadAction<EnhancementType>) => {
             state.enhancement = action.payload;
         },
-        setTransformations: (state, action: PayloadAction<EnhancementType>) => {
+        setEnhanceTransformations: (
+            state,
+            action: PayloadAction<EnhancementType>,
+        ) => {
             if (action.payload === "restore") {
-                state.transformations = { restore: true };
+                if (!state.transformations.restore) {
+                    state.transformations.restore = true;
+                } else {
+                    state.transformations.restore = false;
+                }
             } else if (action.payload === "improve") {
-                state.transformations = { improve: true };
-            } else if (action.payload === "remove-background") {
-                state.transformations = { removeBackground: true };
+                if (!state.transformations.improve) {
+                    state.transformations.improve = true;
+                } else {
+                    state.transformations.improve = false;
+                }
+            } else if (action.payload === "removeBackground") {
+                if (!state.transformations.removeBackground) {
+                    state.transformations.removeBackground = true;
+                } else {
+                    state.transformations.removeBackground = false;
+                }
             } else {
-                state.transformations = {};
+                state.transformations = {
+                    ...state.transformations,
+                    restore: false,
+                    improve: false,
+                    removeBackground: false,
+                };
             }
+        },
+        setCrop: (state, action: PayloadAction<CropType>) => {
+            state.cropObj!.cropType = action.payload;
+        },
+        setCropTransformations: (state, action: PayloadAction<CropObjType>) => {
+            const { cropType, width, height } = action.payload;
+            if (cropType === "square") {
+                if (width! > height!) {
+                    state.transformations.width = height;
+                } else {
+                    state.transformations.height = width;
+                }
+            } else if (cropType === "landscape") {
+                state.transformations.width = width;
+                state.transformations.height = (width! * 9) / 16;
+            } else if (cropType === "portrait") {
+                state.transformations.height = height;
+                state.transformations.width = (height! * 9) / 16;
+            } else {
+                state.transformations = {
+                    ...state.transformations,
+                    width: width,
+                    height: height,
+                };
+            }
+            state.transformations.crop = {
+                source: true,
+                type: "fill",
+            };
+        },
+        setFilter: (state, action: PayloadAction<FilterType>) => {
+            state.filter = action.payload;
+        },
+        setFilterTransformations: (
+            state,
+            action: PayloadAction<FilterObjectType>,
+        ) => {
+            state.transformations = {
+                ...state.transformations,
+                ...action.payload,
+            };
+        },
+        reArrangeTransformations: (
+            state,
+            action: PayloadAction<DefaultTransformationsType>,
+        ) => {
+            state.transformations = action.payload;
         },
     },
 });
@@ -59,7 +137,12 @@ export const {
     setActiveTab,
     setActiveEditTab,
     setEnhancement,
-    setTransformations,
+    setEnhanceTransformations,
+    setCrop,
+    setCropTransformations,
+    setFilter,
+    setFilterTransformations,
+    reArrangeTransformations,
 } = tabSlice.actions;
 
 // export const selectCount = (state: RootState) => state.counter.isOpen

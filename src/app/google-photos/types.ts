@@ -79,7 +79,7 @@ export type EnhancementType =
     | "none"
     | "improve"
     | "restore"
-    | "remove-background";
+    | "removeBackground";
 
 export type EnhanceButtonType = {
     id: EnhancementType;
@@ -88,3 +88,57 @@ export type EnhanceButtonType = {
 };
 
 export type TransformationsType = Omit<CldImageProps, "src" | "alt">;
+
+export type CropType = "none" | "square" | "landscape" | "portrait";
+
+export type CropButtonType = {
+    id: CropType;
+    icon: JSX.Element;
+    label: string;
+};
+
+export type CropObjType = {
+    cropType: CropType;
+    width?: number;
+    height?: number;
+    source?: boolean;
+    type?: "fill";
+};
+
+export type FilterType =
+    | "none"
+    | "assistColorblind"
+    | "blackwhite"
+    | "brightness"
+    | "brightnessHSB"
+    | "cartoonify"
+    | "gradientFade"
+    | "grayscale"
+    | "negate"
+    | "pixelate"
+    | "sanitize"
+    | "sepia"
+    | "simulateColorblind"
+    | "tint"
+    | "vignette";
+
+export type FilterObjectType =
+    | {}
+    | { assistColorblind: boolean }
+    | { blackwhite: boolean }
+    | { brightness: boolean }
+    | { brightnessHSB: boolean }
+    | { cartoonify: boolean }
+    | { gradientFade: boolean }
+    | { grayscale: boolean }
+    | { negate: boolean }
+    | { pixelate: boolean }
+    | { sanitize: boolean }
+    | { sepia: boolean }
+    | { simulateColorblind: boolean }
+    | { tint: boolean }
+    | { vignette: boolean };
+
+export type DefaultTransformationsType = {
+    [k: string]: any;
+};

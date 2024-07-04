@@ -3,10 +3,7 @@ import {
     useAppSelector,
 } from "@/providers/reduxjs-provider/hooks";
 import {
-    setActiveEditTab,
     setActiveTab,
-    setEnhancement,
-    setTransformations,
     toggleTab,
 } from "@/providers/reduxjs-provider/slices/tab";
 
@@ -22,8 +19,6 @@ function CloseTabButton() {
             onClick={() => {
                 dispatch(toggleTab(!isOpen));
                 dispatch(setActiveTab("none"));
-                dispatch(setEnhancement("none"));
-                dispatch(setTransformations("none"));
             }}
         >
             Close
