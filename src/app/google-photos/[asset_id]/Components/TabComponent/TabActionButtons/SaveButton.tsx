@@ -1,20 +1,30 @@
+import { CloudinaryResourceType } from "@/app/google-photos/types";
 import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
+import axios from "axios";
 import { getCldImageUrl } from "next-cloudinary";
 
-function SaveButton({ src }: { src: string }) {
+function SaveButton({ resource }: { resource: CloudinaryResourceType }) {
+    const { public_id } = resource;
+
     const { transformations } = useAppSelector((s) => s.tab);
 
     const ObjectToSave = Object.fromEntries([
-        ...Object.entries(transformations).filter(([key, _]) => key !== "crop"),
-        ["src", src],
+        ...Object.entries(transformations),
+        ["src", public_id],
         ["format", "default"],
+        ["quality", "default"],
     ]);
 
-    const saveImage = () => {
-        console.log(ObjectToSave);
-
+    const saveImage = async () => {
         const url = getCldImageUrl(ObjectToSave);
-        console.log(url);
+
+        const result = await fetch("/google-photos/api/upload", {
+            method: "POST",
+            body: JSON.stringify({ url, public_id }),
+        });
+
+        const data = await result.json();
+        console.log(data);
     };
 
     return (

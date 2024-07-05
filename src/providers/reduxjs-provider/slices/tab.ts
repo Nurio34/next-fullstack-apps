@@ -129,6 +129,9 @@ export const tabSlice = createSlice({
         ) => {
             state.transformations = action.payload;
         },
+        resetTransformations: (state) => {
+            state.transformations = {};
+        },
     },
 });
 
@@ -143,6 +146,7 @@ export const {
     setFilter,
     setFilterTransformations,
     reArrangeTransformations,
+    resetTransformations,
 } = tabSlice.actions;
 
 // export const selectCount = (state: RootState) => state.counter.isOpen

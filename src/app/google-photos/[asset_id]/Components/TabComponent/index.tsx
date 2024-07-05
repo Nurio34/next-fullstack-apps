@@ -40,7 +40,7 @@ function TabComponent({ resource }: { resource: CloudinaryResourceType }) {
                 })}
             </ul>
 
-            <TabActionButtons src={resource.public_id} />
+            <TabActionButtons resource={resource} />
         </aside>
     );
 }

@@ -1,10 +1,11 @@
 import SaveButton from "./SaveButton";
 import CloseTabButton from "./CloseTabButton";
+import { CloudinaryResourceType } from "@/app/google-photos/types";
 
-function TabbActionButtons({ src }: { src: string }) {
+function TabbActionButtons({ resource }: { resource: CloudinaryResourceType }) {
     return (
         <div className="grid gap-y-[1vh]">
-            <SaveButton src={src} />
+            <SaveButton resource={resource} />
             <CloseTabButton />
         </div>
     );
