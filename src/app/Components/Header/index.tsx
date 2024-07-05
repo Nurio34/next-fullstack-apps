@@ -1,8 +1,7 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React from "react";
 import Applications from "./Components/Applications";
+import SetHeaderHeight from "./Components/SetHeaderHeight";
 
 function Header() {
     return (
@@ -17,6 +16,7 @@ function Header() {
             <SignedIn>
                 <UserButton />
             </SignedIn>
+            <SetHeaderHeight />
         </header>
     );
 }

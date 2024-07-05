@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import tabReducer from "./slices/tab";
+import componentsReducer from "./slices/components";
 
 export const store = configureStore({
     reducer: {
+        components: componentsReducer,
         tab: tabReducer,
     },
 });
