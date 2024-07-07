@@ -8,9 +8,21 @@ function Client() {
     return (
         <main style={{ minHeight: mainHeight }}>
             <header>
-                <ul>
+                <ul className="flex gap-[1vw]">
                     <li>
-                        <Link href={"/animations/1"}>Animation1</Link>
+                        <Link href={"/animations/heroes"}>Heroes</Link>
+                    </li>
+                    <li>
+                        <Link href={"/animations/scroll"}>Scroll</Link>
+                    </li>
+                    <li>
+                        <Link href={"/animations/cubes"}>Cubes</Link>
+                    </li>
+                    <li>
+                        <Link href={"/animations/loading"}>Loading</Link>
+                    </li>
+                    <li>
+                        <Link href={"/animations/follow"}>Follow</Link>
                     </li>
                 </ul>
             </header>

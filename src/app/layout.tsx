@@ -21,7 +21,7 @@ export default function RootLayout({
     return (
         <ClerkProvider>
             <html lang="en" data-theme="dark">
-                <body className={inter.className}>
+                <body className={"overflow-hidden min-h-[100vh]"}>
                     <Providers>
                         <Header />
                         {children}

@@ -28,7 +28,7 @@ function Client() {
 
     return (
         <main
-            className="flex justify-center items-center"
+            className="flex justify-center items-center relative"
             style={{ minHeight: mainHeight }}
         >
             <section
