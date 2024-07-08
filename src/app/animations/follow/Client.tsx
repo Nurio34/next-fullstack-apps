@@ -18,14 +18,15 @@ function Client() {
 
         window.addEventListener("mousemove", onMouseMove);
 
-        // return () => window.removeEventListener("mousemove", onMouseMove);
+        return () => window.removeEventListener("mousemove", onMouseMove);
     }, []);
 
     return (
         <main
-            className="flex justify-center items-center "
+            className="flex justify-center items-center overflow-hidden w-full"
             style={{
                 minHeight: mainHeight,
+                maxHeight: mainHeight,
             }}
         >
             <ul>

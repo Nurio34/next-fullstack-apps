@@ -3,27 +3,23 @@ import Link from "next/link";
 
 function Client() {
     const { headerHeight, mainHeight } = useAppSelector((s) => s.components);
-    console.log(headerHeight, mainHeight);
+
+    const animations = ["heroes", "scroll", "cubes", "loading", "follow"];
 
     return (
         <main style={{ minHeight: mainHeight }}>
-            <header>
-                <ul className="flex gap-[1vw]">
-                    <li>
-                        <Link href={"/animations/heroes"}>Heroes</Link>
-                    </li>
-                    <li>
-                        <Link href={"/animations/scroll"}>Scroll</Link>
-                    </li>
-                    <li>
-                        <Link href={"/animations/cubes"}>Cubes</Link>
-                    </li>
-                    <li>
-                        <Link href={"/animations/loading"}>Loading</Link>
-                    </li>
-                    <li>
-                        <Link href={"/animations/follow"}>Follow</Link>
-                    </li>
+            <header className="py-[1vh] px-[1vw]">
+                <ul className="flex gap-[1vw] capitalize">
+                    {animations.map((animation) => {
+                        return (
+                            <li key={animation}>
+                                <Link href={`/animations/${animation}`}>
+                                    {animation}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                    <li></li>
                 </ul>
             </header>
         </main>

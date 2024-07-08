@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/db";
+import prisma from "@/lib/prisma-mongo-db";
 import { TaskSchema, TaskType } from "@/app/todoApp/types";
 import { Task } from "@prisma/client";
 import { revalidatePath } from "next/cache";
