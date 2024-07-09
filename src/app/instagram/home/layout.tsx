@@ -4,6 +4,7 @@ import ProfileCard from "./Components/ProfileCard";
 import FollowRequests from "./Components/FollowRequests";
 import Menu from "./Components/Menu";
 import Birthdays from "./Components/Birthdays";
+import CalculateMaxWidth from "./Components/CalculateMaxWidth";
 
 function RootLayout({
     children,
@@ -13,12 +14,15 @@ function RootLayout({
     return (
         <main className=" mx-[8vw] my-[4vh] space-y-[2vh]">
             <Header />
-            <div className="grid grid-cols-[1fr,4fr,2fr] gap-[1vw]">
+            <div className="grid grid-cols-[1fr,4fr,2fr] justify-center gap-[1vw]">
                 <div className="space-y-[2vh]">
                     <ProfileCard />
                     <Menu />
                 </div>
-                <div>{children}</div>
+                <div className=" relative">
+                    <CalculateMaxWidth />
+                    {children}
+                </div>
                 <div className="space-y-[2vh]">
                     <FollowRequests />
                     <Birthdays />

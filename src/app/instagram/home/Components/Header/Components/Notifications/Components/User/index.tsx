@@ -19,17 +19,13 @@ async function User() {
         console.log(getUserAvatar);
 
         return (
-            <>
-                {getUserAvatar ? (
-                    <figure className=" relative w-8 aspect-square rounded-full overflow-hidden border-[1px] border-base-content ">
-                        <Image
-                            src={getUserAvatar.avatar || no_avatar}
-                            fill
-                            alt="avatar"
-                        />
-                    </figure>
-                ) : null}
-            </>
+            <figure className=" relative w-8 aspect-square rounded-full overflow-hidden border-[1px] border-base-content bg-primary ">
+                <Image
+                    src={getUserAvatar?.avatar || no_avatar}
+                    fill
+                    alt="avatar"
+                />
+            </figure>
         );
     } catch (error) {
         return <figure className=" relative w-4 aspect-square "></figure>;

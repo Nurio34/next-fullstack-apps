@@ -1,3 +1,5 @@
+//* package.json => "postinstall": "prisma generate --schema=prisma/mongo.prisma" 
+
 //* npx prisma generate --schema=prisma/mongo.prisma
 //* npx prisma db push --schema=prisma/mongo.prisma
 //* npx prisma studio --schema=prisma/mongo.prisma

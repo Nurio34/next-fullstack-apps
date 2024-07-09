@@ -39,7 +39,7 @@ async function ProfileCard() {
                     }}
                 >
                     <figure
-                        className="w-16 aspect-square rounded-full overflow-hidden
+                        className="w-16 aspect-square rounded-full border-[1px] border-base-content bg-primary overflow-hidden
                         absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
                     "
                     >
