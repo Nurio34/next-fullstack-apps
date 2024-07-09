@@ -7,7 +7,7 @@ import React from "react";
 function Applications() {
     const path = usePathname();
 
-    const apps = ["todoApp", "google-photos", "animations"];
+    const apps = ["todoApp", "google-photos", "animations", "instagram"];
 
     return (
         <ul className="flex gap-[2vw] items-center capitalize">

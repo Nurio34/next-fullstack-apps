@@ -11382,7 +11382,7 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -11408,7 +11408,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -11484,7 +11484,7 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -13643,7 +13643,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutPostsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -13668,7 +13668,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutPostsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -13839,7 +13839,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCommentsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -13864,7 +13864,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14042,7 +14042,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutLikesInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14067,7 +14067,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutLikesInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14256,7 +14256,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutFollowersInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14281,7 +14281,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutFollowersInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14311,7 +14311,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutFollowingsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14336,7 +14336,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutFollowingsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14484,7 +14484,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutSentRequestsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14509,7 +14509,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutSentRequestsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14539,7 +14539,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutRecivedRequestsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14564,7 +14564,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutRecivedRequestsInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14712,7 +14712,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutBlocksInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14737,7 +14737,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutBlocksInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14767,7 +14767,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutBlockedBysInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14792,7 +14792,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutBlockedBysInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14940,7 +14940,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutStoryInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
@@ -14965,7 +14965,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutStoryInput = {
-    id?: string
+    id: string
     username: string
     avatar?: string | null
     cover?: string | null
