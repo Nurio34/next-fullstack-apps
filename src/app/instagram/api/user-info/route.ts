@@ -10,6 +10,8 @@ export async function POST(req: Request) {
                 id: currentUser,
             },
             select: {
+                username: true,
+                id: true,
                 sentRequests: true,
                 followings: true,
                 blocks: true,

@@ -11,7 +11,6 @@ function BlockUserButton({
     const isUserBlocked = currentUserInfo?.blocks?.some(
         (block) => block.blockedId === userInfo.id,
     );
-    console.log(isUserBlocked);
 
     return (
         <div className="flex justify-end">

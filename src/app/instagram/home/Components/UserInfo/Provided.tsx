@@ -9,6 +9,8 @@ import FollowButton from "./Components/FollowButton";
 import BlockUserButton from "./Components/BlockUserButton";
 
 export type CurrentUserInfo = {
+    username: string;
+    id: string;
     followings: {
         id: string;
         createdAt: Date;
@@ -47,6 +49,7 @@ export type UserInfo = {
 
 function Provided() {
     const { currentUser, username } = useAppSelector((s) => s.instagram);
+
     const [currentUserInfo, setCurrentUserInfo] = useState<CurrentUserInfo>(
         {} as CurrentUserInfo,
     );
@@ -76,6 +79,7 @@ function Provided() {
 
     const path = usePathname();
     const isPathIncludesProfile = path.includes("profile");
+    const isCurrentUserProfile = path.includes(currentUserInfo.username);
 
     return (
         <>
@@ -138,14 +142,18 @@ function Provided() {
                             </p>
                         </div>
                     </div>
-                    <FollowButton
-                        currentUserInfo={currentUserInfo}
-                        userInfo={userInfo}
-                    />
-                    <BlockUserButton
-                        currentUserInfo={currentUserInfo}
-                        userInfo={userInfo}
-                    />
+                    {!isCurrentUserProfile && (
+                        <>
+                            <FollowButton
+                                currentUserInfo={currentUserInfo}
+                                userInfo={userInfo}
+                            />
+                            <BlockUserButton
+                                currentUserInfo={currentUserInfo}
+                                userInfo={userInfo}
+                            />
+                        </>
+                    )}
                 </div>
             )}
         </>

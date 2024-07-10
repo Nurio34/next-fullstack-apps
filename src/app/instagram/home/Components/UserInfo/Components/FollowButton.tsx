@@ -1,3 +1,4 @@
+import { useOptimistic, useState } from "react";
 import { CurrentUserInfo, UserInfo } from "../Provided";
 
 function FollowButton({
@@ -15,22 +16,49 @@ function FollowButton({
         (following) => following.followedId === userInfo.id,
     );
 
+    const [status, setStatus] = useState<{
+        followStatus: boolean;
+        followRequestStatus: boolean;
+    }>({
+        followStatus: isFollowRequestSent,
+        followRequestStatus: isFollowing,
+    });
+    const { followRequestStatus, followStatus } = status;
+
+    const handleFollow = async () => {
+        const res = await fetch("/instagram/api/follow", {
+            method: "POST",
+            body: JSON.stringify({
+                currentUser: currentUserInfo.id,
+                user: userInfo.id,
+                username: userInfo.username,
+            }),
+        });
+        const data = await res.json();
+        setStatus(data);
+    };
+
+    const [optimisticState, optFn] = useOptimistic(status, () => {
+        console.log("ok");
+    });
+
     return (
         <button
             type="button"
             className={`btn w-full
             ${
-                isFollowing
+                followStatus
                     ? "btn-success"
-                    : isFollowRequestSent
+                    : followRequestStatus
                     ? "btn-warning"
                     : "btn-info"
             }
         `}
+            onClick={handleFollow}
         >
-            {isFollowing
+            {followStatus
                 ? "Following"
-                : isFollowRequestSent
+                : followRequestStatus
                 ? "Request Sent..."
                 : "Follow"}
         </button>
