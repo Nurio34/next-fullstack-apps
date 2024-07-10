@@ -2,13 +2,12 @@
 
 import { store } from "@/providers/reduxjs-provider";
 import { Provider } from "react-redux";
-import Stories from "./Components/Stories";
-import { usePathname } from "next/navigation";
+import Provided from "./Provided";
 
 function Client() {
     return (
         <Provider store={store}>
-            <Stories />
+            <Provided />
         </Provider>
     );
 }

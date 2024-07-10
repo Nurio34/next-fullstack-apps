@@ -5,9 +5,7 @@ function Actions() {
     const actions = [
         {
             id: "photo",
-            icon: (
-                <FaPhotoVideo className=" bg-gradient-to-r from-red-500 to-yellow-500" />
-            ),
+            icon: <FaPhotoVideo />,
         },
         { id: "video", icon: <FaVideo /> },
         { id: "poll", icon: <MdOutlinePoll /> },

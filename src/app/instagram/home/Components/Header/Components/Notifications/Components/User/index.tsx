@@ -16,8 +16,6 @@ async function User() {
             },
         });
 
-        console.log(getUserAvatar);
-
         return (
             <figure className=" relative w-8 aspect-square rounded-full overflow-hidden border-[1px] border-base-content bg-primary ">
                 <Image

@@ -45,8 +45,8 @@ model User {
     posts           Post[]
     comments        Comment[]
     likes           Like[]
-    followers       Follower[]      @relation("fallower")
-    followings      Follower[]      @relation("fallowed")
+    followings      Follower[]      @relation("fallower")
+    followers       Follower[]      @relation("fallowed")
     sentRequests    FollowRequest[] @relation("sender")
     recivedRequests FollowRequest[] @relation("reciver")
     blocks          Block[]         @relation("blocker")

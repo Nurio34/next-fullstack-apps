@@ -5,6 +5,8 @@ import FollowRequests from "./Components/FollowRequests";
 import Menu from "./Components/Menu";
 import Birthdays from "./Components/Birthdays";
 import CalculateMaxWidth from "./Components/CalculateMaxWidth";
+import UserInfo from "./Components/UserInfo";
+import UserMedia from "./Components/UserMedia";
 
 function RootLayout({
     children,
@@ -24,6 +26,8 @@ function RootLayout({
                     {children}
                 </div>
                 <div className="space-y-[2vh]">
+                    <UserInfo />
+                    <UserMedia />
                     <FollowRequests />
                     <Birthdays />
                 </div>

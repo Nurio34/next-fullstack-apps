@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./Components/Header";
 import { Toaster } from "react-hot-toast";
 import Providers from "@/providers/tansatck-provider";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 

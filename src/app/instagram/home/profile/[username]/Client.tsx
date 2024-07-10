@@ -2,13 +2,12 @@
 
 import { store } from "@/providers/reduxjs-provider";
 import { Provider } from "react-redux";
-import Stories from "./Components/Stories";
-import { usePathname } from "next/navigation";
+import Provided from "./Provided";
 
-function Client() {
+function Client({ userId, username }: { userId: string; username: string }) {
     return (
         <Provider store={store}>
-            <Stories />
+            <Provided userId={userId} username={username} />
         </Provider>
     );
 }

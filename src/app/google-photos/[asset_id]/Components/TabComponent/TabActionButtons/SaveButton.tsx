@@ -24,7 +24,6 @@ function SaveButton({ resource }: { resource: CloudinaryResourceType }) {
         });
 
         const data = await result.json();
-        console.log(data);
     };
 
     return (

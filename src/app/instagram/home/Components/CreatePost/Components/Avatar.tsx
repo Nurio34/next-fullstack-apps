@@ -4,7 +4,7 @@ import no_avatar from "@/../public/instagram/no_avatar.webp";
 
 function Avatar({ avatar }: { avatar: string | null | undefined }) {
     return (
-        <figure className=" relative w-[3vw] justify-self-center aspect-square border-[1px] border-base-content rounded-full">
+        <figure className=" relative w-[3vw] justify-self-center aspect-square border-[1px] border-base-content rounded-full overflow-hidden">
             <Image src={avatar || no_avatar} fill alt="avatar" />
         </figure>
     );

@@ -16,12 +16,11 @@ function Stories() {
     ];
 
     const { storiesMaxWidth } = useAppSelector((s) => s.instagram);
-    console.log(storiesMaxWidth);
 
     return (
         <div
             className={`bg-base-200 py-[1vh] px-[1vw] rounded-md shadow-sm shadow-base-content
-                flex gap-[1vw] overflow-y-scroll
+                flex gap-[1vw] overflow-x-auto
             `}
             style={{ maxWidth: storiesMaxWidth }}
         >

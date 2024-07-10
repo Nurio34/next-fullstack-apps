@@ -1560,8 +1560,8 @@ export namespace Prisma {
     posts: number
     comments: number
     likes: number
-    followers: number
     followings: number
+    followers: number
     sentRequests: number
     recivedRequests: number
     blocks: number
@@ -1572,8 +1572,8 @@ export namespace Prisma {
     posts?: boolean | UserCountOutputTypeCountPostsArgs
     comments?: boolean | UserCountOutputTypeCountCommentsArgs
     likes?: boolean | UserCountOutputTypeCountLikesArgs
-    followers?: boolean | UserCountOutputTypeCountFollowersArgs
     followings?: boolean | UserCountOutputTypeCountFollowingsArgs
+    followers?: boolean | UserCountOutputTypeCountFollowersArgs
     sentRequests?: boolean | UserCountOutputTypeCountSentRequestsArgs
     recivedRequests?: boolean | UserCountOutputTypeCountRecivedRequestsArgs
     blocks?: boolean | UserCountOutputTypeCountBlocksArgs
@@ -1615,14 +1615,14 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountFollowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountFollowingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FollowerWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountFollowingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountFollowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FollowerWhereInput
   }
 
@@ -2887,8 +2887,8 @@ export namespace Prisma {
     posts?: boolean | User$postsArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
     likes?: boolean | User$likesArgs<ExtArgs>
-    followers?: boolean | User$followersArgs<ExtArgs>
     followings?: boolean | User$followingsArgs<ExtArgs>
+    followers?: boolean | User$followersArgs<ExtArgs>
     sentRequests?: boolean | User$sentRequestsArgs<ExtArgs>
     recivedRequests?: boolean | User$recivedRequestsArgs<ExtArgs>
     blocks?: boolean | User$blocksArgs<ExtArgs>
@@ -2918,8 +2918,8 @@ export namespace Prisma {
     posts?: boolean | User$postsArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
     likes?: boolean | User$likesArgs<ExtArgs>
-    followers?: boolean | User$followersArgs<ExtArgs>
     followings?: boolean | User$followingsArgs<ExtArgs>
+    followers?: boolean | User$followersArgs<ExtArgs>
     sentRequests?: boolean | User$sentRequestsArgs<ExtArgs>
     recivedRequests?: boolean | User$recivedRequestsArgs<ExtArgs>
     blocks?: boolean | User$blocksArgs<ExtArgs>
@@ -2934,8 +2934,8 @@ export namespace Prisma {
       posts: Prisma.$PostPayload<ExtArgs>[]
       comments: Prisma.$CommentPayload<ExtArgs>[]
       likes: Prisma.$LikePayload<ExtArgs>[]
-      followers: Prisma.$FollowerPayload<ExtArgs>[]
       followings: Prisma.$FollowerPayload<ExtArgs>[]
+      followers: Prisma.$FollowerPayload<ExtArgs>[]
       sentRequests: Prisma.$FollowRequestPayload<ExtArgs>[]
       recivedRequests: Prisma.$FollowRequestPayload<ExtArgs>[]
       blocks: Prisma.$BlockPayload<ExtArgs>[]
@@ -3322,8 +3322,8 @@ export namespace Prisma {
     posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany"> | Null>
     comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany"> | Null>
     likes<T extends User$likesArgs<ExtArgs> = {}>(args?: Subset<T, User$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany"> | Null>
-    followers<T extends User$followersArgs<ExtArgs> = {}>(args?: Subset<T, User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowerPayload<ExtArgs>, T, "findMany"> | Null>
     followings<T extends User$followingsArgs<ExtArgs> = {}>(args?: Subset<T, User$followingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowerPayload<ExtArgs>, T, "findMany"> | Null>
+    followers<T extends User$followersArgs<ExtArgs> = {}>(args?: Subset<T, User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowerPayload<ExtArgs>, T, "findMany"> | Null>
     sentRequests<T extends User$sentRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$sentRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowRequestPayload<ExtArgs>, T, "findMany"> | Null>
     recivedRequests<T extends User$recivedRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$recivedRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowRequestPayload<ExtArgs>, T, "findMany"> | Null>
     blocks<T extends User$blocksArgs<ExtArgs> = {}>(args?: Subset<T, User$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany"> | Null>
@@ -3757,9 +3757,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.followers
+   * User.followings
    */
-  export type User$followersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$followingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Follower
      */
@@ -3777,9 +3777,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.followings
+   * User.followers
    */
-  export type User$followingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$followersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Follower
      */
@@ -10795,8 +10795,8 @@ export namespace Prisma {
     posts?: PostListRelationFilter
     comments?: CommentListRelationFilter
     likes?: LikeListRelationFilter
-    followers?: FollowerListRelationFilter
     followings?: FollowerListRelationFilter
+    followers?: FollowerListRelationFilter
     sentRequests?: FollowRequestListRelationFilter
     recivedRequests?: FollowRequestListRelationFilter
     blocks?: BlockListRelationFilter
@@ -10821,8 +10821,8 @@ export namespace Prisma {
     posts?: PostOrderByRelationAggregateInput
     comments?: CommentOrderByRelationAggregateInput
     likes?: LikeOrderByRelationAggregateInput
-    followers?: FollowerOrderByRelationAggregateInput
     followings?: FollowerOrderByRelationAggregateInput
+    followers?: FollowerOrderByRelationAggregateInput
     sentRequests?: FollowRequestOrderByRelationAggregateInput
     recivedRequests?: FollowRequestOrderByRelationAggregateInput
     blocks?: BlockOrderByRelationAggregateInput
@@ -10850,8 +10850,8 @@ export namespace Prisma {
     posts?: PostListRelationFilter
     comments?: CommentListRelationFilter
     likes?: LikeListRelationFilter
-    followers?: FollowerListRelationFilter
     followings?: FollowerListRelationFilter
+    followers?: FollowerListRelationFilter
     sentRequests?: FollowRequestListRelationFilter
     recivedRequests?: FollowRequestListRelationFilter
     blocks?: BlockListRelationFilter
@@ -11398,8 +11398,8 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -11424,8 +11424,8 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -11449,8 +11449,8 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -11474,8 +11474,8 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -11701,8 +11701,8 @@ export namespace Prisma {
   export type FollowerCreateInput = {
     id?: string
     createdAt?: Date | string
-    follower: UserCreateNestedOneWithoutFollowersInput
-    followed: UserCreateNestedOneWithoutFollowingsInput
+    follower: UserCreateNestedOneWithoutFollowingsInput
+    followed: UserCreateNestedOneWithoutFollowersInput
   }
 
   export type FollowerUncheckedCreateInput = {
@@ -11714,8 +11714,8 @@ export namespace Prisma {
 
   export type FollowerUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
-    followed?: UserUpdateOneRequiredWithoutFollowingsNestedInput
+    follower?: UserUpdateOneRequiredWithoutFollowingsNestedInput
+    followed?: UserUpdateOneRequiredWithoutFollowersNestedInput
   }
 
   export type FollowerUncheckedUpdateInput = {
@@ -12966,24 +12966,16 @@ export namespace Prisma {
     update?: XOR<XOR<CommentUpdateToOneWithWhereWithoutLikesInput, CommentUpdateWithoutLikesInput>, CommentUncheckedUpdateWithoutLikesInput>
   }
 
-  export type UserCreateNestedOneWithoutFollowersInput = {
-    create?: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
-    connectOrCreate?: UserCreateOrConnectWithoutFollowersInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type UserCreateNestedOneWithoutFollowingsInput = {
     create?: XOR<UserCreateWithoutFollowingsInput, UserUncheckedCreateWithoutFollowingsInput>
     connectOrCreate?: UserCreateOrConnectWithoutFollowingsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
+  export type UserCreateNestedOneWithoutFollowersInput = {
     create?: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
     connectOrCreate?: UserCreateOrConnectWithoutFollowersInput
-    upsert?: UserUpsertWithoutFollowersInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFollowersInput, UserUpdateWithoutFollowersInput>, UserUncheckedUpdateWithoutFollowersInput>
   }
 
   export type UserUpdateOneRequiredWithoutFollowingsNestedInput = {
@@ -12992,6 +12984,14 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutFollowingsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFollowingsInput, UserUpdateWithoutFollowingsInput>, UserUncheckedUpdateWithoutFollowingsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
+    create?: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFollowersInput
+    upsert?: UserUpsertWithoutFollowersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFollowersInput, UserUpdateWithoutFollowersInput>, UserUncheckedUpdateWithoutFollowersInput>
   }
 
   export type UserCreateNestedOneWithoutSentRequestsInput = {
@@ -13269,7 +13269,7 @@ export namespace Prisma {
   export type FollowerCreateWithoutFollowerInput = {
     id?: string
     createdAt?: Date | string
-    followed: UserCreateNestedOneWithoutFollowingsInput
+    followed: UserCreateNestedOneWithoutFollowersInput
   }
 
   export type FollowerUncheckedCreateWithoutFollowerInput = {
@@ -13290,7 +13290,7 @@ export namespace Prisma {
   export type FollowerCreateWithoutFollowedInput = {
     id?: string
     createdAt?: Date | string
-    follower: UserCreateNestedOneWithoutFollowersInput
+    follower: UserCreateNestedOneWithoutFollowingsInput
   }
 
   export type FollowerUncheckedCreateWithoutFollowedInput = {
@@ -13658,8 +13658,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -13683,8 +13683,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -13773,8 +13773,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -13797,8 +13797,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -13854,8 +13854,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -13879,8 +13879,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -13965,8 +13965,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -13989,8 +13989,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -14057,8 +14057,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -14082,8 +14082,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -14168,8 +14168,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -14192,8 +14192,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -14255,61 +14255,6 @@ export namespace Prisma {
     postId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserCreateWithoutFollowersInput = {
-    id: string
-    username: string
-    avatar?: string | null
-    cover?: string | null
-    name?: string | null
-    surname?: string | null
-    description?: string | null
-    city?: string | null
-    school?: string | null
-    work?: string | null
-    website?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    posts?: PostCreateNestedManyWithoutUserInput
-    comments?: CommentCreateNestedManyWithoutUserInput
-    likes?: LikeCreateNestedManyWithoutUserInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
-    sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
-    recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
-    blocks?: BlockCreateNestedManyWithoutBlockerInput
-    blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutFollowersInput = {
-    id: string
-    username: string
-    avatar?: string | null
-    cover?: string | null
-    name?: string | null
-    surname?: string | null
-    description?: string | null
-    city?: string | null
-    school?: string | null
-    work?: string | null
-    website?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    posts?: PostUncheckedCreateNestedManyWithoutUserInput
-    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
-    likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
-    sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
-    recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
-    blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
-    blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutFollowersInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
-  }
-
   export type UserCreateWithoutFollowingsInput = {
     id: string
     username: string
@@ -14327,7 +14272,7 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -14352,7 +14297,7 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -14365,63 +14310,59 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutFollowingsInput, UserUncheckedCreateWithoutFollowingsInput>
   }
 
-  export type UserUpsertWithoutFollowersInput = {
-    update: XOR<UserUpdateWithoutFollowersInput, UserUncheckedUpdateWithoutFollowersInput>
+  export type UserCreateWithoutFollowersInput = {
+    id: string
+    username: string
+    avatar?: string | null
+    cover?: string | null
+    name?: string | null
+    surname?: string | null
+    description?: string | null
+    city?: string | null
+    school?: string | null
+    work?: string | null
+    website?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posts?: PostCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
+    likes?: LikeCreateNestedManyWithoutUserInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
+    recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
+    blocks?: BlockCreateNestedManyWithoutBlockerInput
+    blockedBys?: BlockCreateNestedManyWithoutBlockedInput
+    story?: StoryCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutFollowersInput = {
+    id: string
+    username: string
+    avatar?: string | null
+    cover?: string | null
+    name?: string | null
+    surname?: string | null
+    description?: string | null
+    city?: string | null
+    school?: string | null
+    work?: string | null
+    website?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikeUncheckedCreateNestedManyWithoutUserInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
+    recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
+    blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
+    blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
+    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutFollowersInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutFollowersInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutFollowersInput, UserUncheckedUpdateWithoutFollowersInput>
-  }
-
-  export type UserUpdateWithoutFollowersInput = {
-    username?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    cover?: NullableStringFieldUpdateOperationsInput | string | null
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    surname?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: NullableStringFieldUpdateOperationsInput | string | null
-    school?: NullableStringFieldUpdateOperationsInput | string | null
-    work?: NullableStringFieldUpdateOperationsInput | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posts?: PostUpdateManyWithoutUserNestedInput
-    comments?: CommentUpdateManyWithoutUserNestedInput
-    likes?: LikeUpdateManyWithoutUserNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
-    sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
-    recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
-    blocks?: BlockUpdateManyWithoutBlockerNestedInput
-    blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutFollowersInput = {
-    username?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    cover?: NullableStringFieldUpdateOperationsInput | string | null
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    surname?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: NullableStringFieldUpdateOperationsInput | string | null
-    school?: NullableStringFieldUpdateOperationsInput | string | null
-    work?: NullableStringFieldUpdateOperationsInput | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
-    sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
-    recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
-    blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
-    blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutFollowingsInput = {
@@ -14451,7 +14392,7 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -14475,7 +14416,66 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
+    recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
+    blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
+    blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
+    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithoutFollowersInput = {
+    update: XOR<UserUpdateWithoutFollowersInput, UserUncheckedUpdateWithoutFollowersInput>
+    create: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFollowersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFollowersInput, UserUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type UserUpdateWithoutFollowersInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    school?: NullableStringFieldUpdateOperationsInput | string | null
+    work?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    likes?: LikeUpdateManyWithoutUserNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
+    recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
+    blocks?: BlockUpdateManyWithoutBlockerNestedInput
+    blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
+    story?: StoryUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFollowersInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    school?: NullableStringFieldUpdateOperationsInput | string | null
+    work?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -14500,8 +14500,8 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
@@ -14525,8 +14525,8 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
@@ -14555,8 +14555,8 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
@@ -14580,8 +14580,8 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
@@ -14620,8 +14620,8 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
@@ -14644,8 +14644,8 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
@@ -14679,8 +14679,8 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
@@ -14703,8 +14703,8 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
@@ -14728,8 +14728,8 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
@@ -14753,8 +14753,8 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
@@ -14783,8 +14783,8 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -14808,8 +14808,8 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -14848,8 +14848,8 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
@@ -14872,8 +14872,8 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
@@ -14907,8 +14907,8 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -14931,8 +14931,8 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -14956,8 +14956,8 @@ export namespace Prisma {
     posts?: PostCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     likes?: LikeCreateNestedManyWithoutUserInput
-    followers?: FollowerCreateNestedManyWithoutFollowerInput
-    followings?: FollowerCreateNestedManyWithoutFollowedInput
+    followings?: FollowerCreateNestedManyWithoutFollowerInput
+    followers?: FollowerCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
@@ -14981,8 +14981,8 @@ export namespace Prisma {
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
-    followers?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
-    followings?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
+    followings?: FollowerUncheckedCreateNestedManyWithoutFollowerInput
+    followers?: FollowerUncheckedCreateNestedManyWithoutFollowedInput
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
@@ -15021,8 +15021,8 @@ export namespace Prisma {
     posts?: PostUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     likes?: LikeUpdateManyWithoutUserNestedInput
-    followers?: FollowerUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
@@ -15045,8 +15045,8 @@ export namespace Prisma {
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
-    followers?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
-    followings?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
+    followings?: FollowerUncheckedUpdateManyWithoutFollowerNestedInput
+    followers?: FollowerUncheckedUpdateManyWithoutFollowedNestedInput
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
@@ -15176,7 +15176,7 @@ export namespace Prisma {
 
   export type FollowerUpdateWithoutFollowerInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    followed?: UserUpdateOneRequiredWithoutFollowingsNestedInput
+    followed?: UserUpdateOneRequiredWithoutFollowersNestedInput
   }
 
   export type FollowerUncheckedUpdateWithoutFollowerInput = {
@@ -15191,7 +15191,7 @@ export namespace Prisma {
 
   export type FollowerUpdateWithoutFollowedInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
+    follower?: UserUpdateOneRequiredWithoutFollowingsNestedInput
   }
 
   export type FollowerUncheckedUpdateWithoutFollowedInput = {
