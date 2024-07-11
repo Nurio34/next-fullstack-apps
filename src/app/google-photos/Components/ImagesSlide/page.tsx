@@ -3,7 +3,7 @@ import { ResourceType } from "../../types";
 import Image from "next/image";
 import "./index.css";
 
-function ImagesSlide({ resources }: { resources: ResourceType[] }) {
+function ImagesSlide({ resources }: { resources: any }) {
     const delayParam = 1.5;
 
     return (
@@ -13,7 +13,7 @@ function ImagesSlide({ resources }: { resources: ResourceType[] }) {
                 width: `${resources.length * 32}px`,
             }}
         >
-            {resources.map((resource, index) => {
+            {resources.map((resource: any, index: number) => {
                 return (
                     <figure
                         key={resource.asset_id}
