@@ -60,7 +60,7 @@ export type OptionsType = {
 };
 
 export type ActionButtonType = {
-    id: ActiveTabType;
+    id: string;
     icon: React.JSX.Element;
     color: string;
 };

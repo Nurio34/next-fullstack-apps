@@ -15,7 +15,7 @@ import {
 
 type TabStateType = {
     isOpen: boolean;
-    activeTab: ActiveTabType;
+    activeTab: string;
     activeEditTab: EditTabIdType;
     enhancement: EnhancementType;
     transformations: TransformationsType;
@@ -42,7 +42,7 @@ export const tabSlice = createSlice({
         toggleTab: (state, action: PayloadAction<boolean>) => {
             state.isOpen = action.payload;
         },
-        setActiveTab: (state, action: PayloadAction<ActiveTabType>) => {
+        setActiveTab: (state, action: PayloadAction<string>) => {
             state.activeTab = action.payload;
         },
         setActiveEditTab: (state, action: PayloadAction<EditTabIdType>) => {
