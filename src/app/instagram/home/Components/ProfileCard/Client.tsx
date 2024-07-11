@@ -24,6 +24,7 @@ function Client({
 }) {
     const path = usePathname();
     const isPathIncludesProfile = path.includes("profile");
+    console.log({ getUserInfo });
 
     return (
         <>
