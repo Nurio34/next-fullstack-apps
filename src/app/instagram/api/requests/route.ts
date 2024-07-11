@@ -13,6 +13,18 @@ export async function GET() {
             where: {
                 reciverId: currentUserId,
             },
+            select: {
+                id: true,
+                sender: {
+                    select: {
+                        avatar: true,
+                        username: true,
+                        name: true,
+                        surname: true,
+                        id: true,
+                    },
+                },
+            },
         });
 
         if (!requests) {

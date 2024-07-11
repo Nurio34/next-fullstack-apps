@@ -25,7 +25,7 @@ function Client() {
         return () => window.removeEventListener("resize", setComponents);
     }, [dispatch]);
 
-    return <div className="sr-only">Client</div>;
+    return <span className="sr-only">Client</span>;
 }
 
 export default Client;

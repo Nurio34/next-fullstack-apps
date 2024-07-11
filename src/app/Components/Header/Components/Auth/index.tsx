@@ -9,7 +9,7 @@ import {
 
 function Auth() {
     return (
-        <div>
+        <>
             <ClerkLoading>
                 <span className="loading loading-dots loading-md min-h-[34px]"></span>
             </ClerkLoading>
@@ -23,7 +23,7 @@ function Auth() {
                     <UserButton />
                 </SignedIn>
             </ClerkLoaded>
-        </div>
+        </>
     );
 }
 
