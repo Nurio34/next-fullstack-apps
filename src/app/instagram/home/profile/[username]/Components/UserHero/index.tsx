@@ -56,7 +56,13 @@ function UserHero() {
         <article className=" bg-base-200 space-y-[1vh] rounded-md shadow-md shadow-base-content py-[1vh] px-[1vw] aspect-video">
             <div className=" relative mb-[6vh]">
                 <figure className=" relative aspect-[16/4] rounded-lg overflow-hidden">
-                    <Image src={user?.cover!} fill alt="cover" />
+                    <Image
+                        src={user?.cover! || "/instagram/no_cover.webp"}
+                        fill
+                        alt="cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority
+                    />
                 </figure>
                 <div className="absolute left-1/2">
                     <figure
@@ -64,7 +70,13 @@ function UserHero() {
                              absolute -translate-y-1/2 -translate-x-1/2
                         "
                     >
-                        <Image src={user?.avatar!} fill alt="cover" />
+                        <Image
+                            src={user?.avatar! || "/instagram/no_cover.webp"}
+                            fill
+                            alt="cover"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
+                        />
                     </figure>
                     <div className="absolute top-[4vw] w-max -translate-x-1/2 space-y-[2vh]">
                         <p className=" text-center font-bold capitalize text-lg">

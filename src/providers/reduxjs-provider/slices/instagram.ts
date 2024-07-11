@@ -6,12 +6,14 @@ type ComponentsStateType = {
     storiesMaxWidth: number;
     currentUser: string;
     username: string;
+    userId: string;
 };
 
 const initialState: ComponentsStateType = {
     storiesMaxWidth: 0,
     currentUser: "",
     username: "",
+    userId: "",
 };
 
 export const componentsSlice = createSlice({
@@ -27,10 +29,13 @@ export const componentsSlice = createSlice({
         setUsername: (state, action: PayloadAction<string>) => {
             state.username = action.payload;
         },
+        setUserId: (state, action: PayloadAction<string>) => {
+            state.userId = action.payload;
+        },
     },
 });
 
-export const { setStoriesMaxWidth, setCurrentUser, setUsername } =
+export const { setStoriesMaxWidth, setCurrentUser, setUsername, setUserId } =
     componentsSlice.actions;
 
 // export const selectCount = (state: RootState) => state.counter.isOpen

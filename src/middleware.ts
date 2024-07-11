@@ -2,7 +2,7 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher([
     "/todoApp(.*)",
-    "/instagram/(.*)",
+    "/instagram/(.+)",
 ]);
 
 export default clerkMiddleware((auth, req) => {

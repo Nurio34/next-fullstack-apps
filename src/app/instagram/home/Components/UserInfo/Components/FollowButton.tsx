@@ -1,4 +1,4 @@
-import { useOptimistic, useState } from "react";
+import { useEffect, useOptimistic, useState } from "react";
 import { CurrentUserInfo, UserInfo } from "../Provided";
 
 function FollowButton({
@@ -19,10 +19,20 @@ function FollowButton({
     const [status, setStatus] = useState<{
         followStatus: boolean;
         followRequestStatus: boolean;
-    }>({
-        followStatus: isFollowRequestSent,
-        followRequestStatus: isFollowing,
-    });
+    }>(
+        {} as {
+            followStatus: boolean;
+            followRequestStatus: boolean;
+        },
+    );
+
+    useEffect(() => {
+        setStatus({
+            followStatus: isFollowing,
+            followRequestStatus: isFollowRequestSent,
+        });
+    }, [isFollowRequestSent, isFollowing]);
+
     const { followRequestStatus, followStatus } = status;
 
     const handleFollow = async () => {
@@ -37,10 +47,6 @@ function FollowButton({
         const data = await res.json();
         setStatus(data);
     };
-
-    const [optimisticState, optFn] = useOptimistic(status, () => {
-        console.log("ok");
-    });
 
     return (
         <button
@@ -57,9 +63,9 @@ function FollowButton({
             onClick={handleFollow}
         >
             {followStatus
-                ? "Following"
+                ? "Unfollow"
                 : followRequestStatus
-                ? "Request Sent..."
+                ? "Cancel Request"
                 : "Follow"}
         </button>
     );

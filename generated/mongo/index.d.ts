@@ -3918,6 +3918,7 @@ export namespace Prisma {
 
   export type PostMinAggregateOutputType = {
     id: string | null
+    img: string | null
     decsription: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3926,6 +3927,7 @@ export namespace Prisma {
 
   export type PostMaxAggregateOutputType = {
     id: string | null
+    img: string | null
     decsription: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3934,6 +3936,7 @@ export namespace Prisma {
 
   export type PostCountAggregateOutputType = {
     id: number
+    img: number
     decsription: number
     createdAt: number
     updatedAt: number
@@ -3944,6 +3947,7 @@ export namespace Prisma {
 
   export type PostMinAggregateInputType = {
     id?: true
+    img?: true
     decsription?: true
     createdAt?: true
     updatedAt?: true
@@ -3952,6 +3956,7 @@ export namespace Prisma {
 
   export type PostMaxAggregateInputType = {
     id?: true
+    img?: true
     decsription?: true
     createdAt?: true
     updatedAt?: true
@@ -3960,6 +3965,7 @@ export namespace Prisma {
 
   export type PostCountAggregateInputType = {
     id?: true
+    img?: true
     decsription?: true
     createdAt?: true
     updatedAt?: true
@@ -4041,6 +4047,7 @@ export namespace Prisma {
 
   export type PostGroupByOutputType = {
     id: string
+    img: string | null
     decsription: string
     createdAt: Date
     updatedAt: Date
@@ -4066,6 +4073,7 @@ export namespace Prisma {
 
   export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    img?: boolean
     decsription?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4079,6 +4087,7 @@ export namespace Prisma {
 
   export type PostSelectScalar = {
     id?: boolean
+    img?: boolean
     decsription?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4101,6 +4110,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      img: string | null
       decsription: string
       createdAt: Date
       updatedAt: Date
@@ -4501,6 +4511,7 @@ export namespace Prisma {
    */ 
   interface PostFieldRefs {
     readonly id: FieldRef<"Post", 'String'>
+    readonly img: FieldRef<"Post", 'String'>
     readonly decsription: FieldRef<"Post", 'String'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
@@ -10557,6 +10568,7 @@ export namespace Prisma {
 
   export const PostScalarFieldEnum: {
     id: 'id',
+    img: 'img',
     decsription: 'decsription',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -10902,6 +10914,7 @@ export namespace Prisma {
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
     id?: StringFilter<"Post"> | string
+    img?: StringNullableFilter<"Post"> | string | null
     decsription?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -10913,6 +10926,7 @@ export namespace Prisma {
 
   export type PostOrderByWithRelationInput = {
     id?: SortOrder
+    img?: SortOrder
     decsription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10927,6 +10941,7 @@ export namespace Prisma {
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
+    img?: StringNullableFilter<"Post"> | string | null
     decsription?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -10938,6 +10953,7 @@ export namespace Prisma {
 
   export type PostOrderByWithAggregationInput = {
     id?: SortOrder
+    img?: SortOrder
     decsription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10952,6 +10968,7 @@ export namespace Prisma {
     OR?: PostScalarWhereWithAggregatesInput[]
     NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Post"> | string
+    img?: StringNullableWithAggregatesFilter<"Post"> | string | null
     decsription?: StringWithAggregatesFilter<"Post"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
@@ -11531,6 +11548,7 @@ export namespace Prisma {
 
   export type PostCreateInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11541,6 +11559,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11550,6 +11569,7 @@ export namespace Prisma {
   }
 
   export type PostUpdateInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11559,6 +11579,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11569,6 +11590,7 @@ export namespace Prisma {
 
   export type PostCreateManyInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11576,12 +11598,14 @@ export namespace Prisma {
   }
 
   export type PostUpdateManyMutationInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostUncheckedUpdateManyInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12140,6 +12164,7 @@ export namespace Prisma {
 
   export type PostCountOrderByAggregateInput = {
     id?: SortOrder
+    img?: SortOrder
     decsription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12148,6 +12173,7 @@ export namespace Prisma {
 
   export type PostMaxOrderByAggregateInput = {
     id?: SortOrder
+    img?: SortOrder
     decsription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12156,6 +12182,7 @@ export namespace Prisma {
 
   export type PostMinOrderByAggregateInput = {
     id?: SortOrder
+    img?: SortOrder
     decsription?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13191,6 +13218,7 @@ export namespace Prisma {
 
   export type PostCreateWithoutUserInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13200,6 +13228,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutUserInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13432,6 +13461,7 @@ export namespace Prisma {
     OR?: PostScalarWhereInput[]
     NOT?: PostScalarWhereInput | PostScalarWhereInput[]
     id?: StringFilter<"Post"> | string
+    img?: StringNullableFilter<"Post"> | string | null
     decsription?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -13895,6 +13925,7 @@ export namespace Prisma {
 
   export type PostCreateWithoutCommentsInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13904,6 +13935,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutCommentsInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14010,6 +14042,7 @@ export namespace Prisma {
   }
 
   export type PostUpdateWithoutCommentsInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14018,6 +14051,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateWithoutCommentsInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14098,6 +14132,7 @@ export namespace Prisma {
 
   export type PostCreateWithoutLikesInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14107,6 +14142,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutLikesInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14213,6 +14249,7 @@ export namespace Prisma {
   }
 
   export type PostUpdateWithoutLikesInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14221,6 +14258,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateWithoutLikesInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15055,6 +15093,7 @@ export namespace Prisma {
 
   export type PostCreateManyUserInput = {
     id?: string
+    img?: string | null
     decsription: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -15112,6 +15151,7 @@ export namespace Prisma {
   }
 
   export type PostUpdateWithoutUserInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15120,6 +15160,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateWithoutUserInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15128,6 +15169,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateManyWithoutUserInput = {
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
