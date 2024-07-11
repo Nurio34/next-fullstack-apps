@@ -8,8 +8,8 @@
         "start": "next start",
         "lint": "next lint",
         "generate": "npx prisma generate --schema=prisma/mongo.prisma",
-        "migrate": "npx prisma migrate deploy --schema=prisma/mongo.prisma",
-        "postinstall": "npx prisma generate --schema=prisma/mongo.prisma && npx prisma migrate deploy --schema=prisma/mongo.prisma"
+        "dbpush": "npx prisma db push --schema=prisma/mongo.prisma",
+        "postinstall": "npm run generate && npm run dbpush"
     },
     "dependencies": {
         "@clerk/nextjs": "^5.2.2",
