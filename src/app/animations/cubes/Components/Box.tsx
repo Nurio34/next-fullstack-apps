@@ -9,7 +9,7 @@ function Box({ ind, currentBoxes }: { ind: number; currentBoxes: number[] }) {
         if (currentBoxes.includes(ind)) {
             setIsFloating(true);
         }
-    }, [currentBoxes]);
+    }, [currentBoxes, ind]);
 
     useEffect(() => {
         if (isFloating) {

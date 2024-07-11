@@ -23,7 +23,7 @@ function Client() {
         setComponents();
         window.addEventListener("resize", setComponents);
         return () => window.removeEventListener("resize", setComponents);
-    }, []);
+    }, [dispatch]);
 
     return <div className="sr-only">Client</div>;
 }

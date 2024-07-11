@@ -29,7 +29,7 @@ function Provided({
         dispatch(setCurrentUser(currentUserId));
         dispatch(setUsername(username));
         dispatch(setUserId(userId));
-    }, []);
+    }, [currentUserId, dispatch, userId, username]);
 
     return (
         <div className="space-y-[2vh]">
