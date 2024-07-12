@@ -6,7 +6,12 @@ import prisma from "@/lib/prisma-mongo-db";
 async function Profile({ params }: { params: { username: string } }) {
     const { userId } = auth();
 
-    if (!userId) redirect("/instagram");
+    if (!userId) {
+        console.log(
+            "Error while 'getting userId' in '/instagram/home/profile/[username]/page.tsx'",
+        );
+        return;
+    }
 
     const userPosts = await prisma.user.findUnique({
         where: {
@@ -18,7 +23,12 @@ async function Profile({ params }: { params: { username: string } }) {
         },
     });
 
-    if (!userPosts) redirect("/instagram");
+    if (!userPosts) {
+        console.log(
+            "Error while 'getting userPosts' in '/instagram/home/profile/[username]/page.tsx'",
+        );
+        return;
+    }
 
     return (
         <Client

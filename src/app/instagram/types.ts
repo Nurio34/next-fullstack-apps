@@ -1,9 +1,6 @@
 import { z } from "zod";
 
 export const InputsSchema = z.object({
-    username: z.string().min(3, {
-        message: "Must be at least 3 chars",
-    }),
     name: z.optional(
         z.string().min(3, {
             message: "Must be at least 3 chars",

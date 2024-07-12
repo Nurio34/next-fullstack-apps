@@ -1,4 +1,7 @@
-import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
+import {
+    useAppDispatch,
+    useAppSelector,
+} from "@/providers/reduxjs-provider/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -9,6 +12,7 @@ import FollowButton from "./Components/FollowButton";
 import BlockUserButton from "./Components/BlockUserButton";
 import { AnimatePresence, motion } from "framer-motion";
 import ProfileForm from "./Components/ProfileForm";
+import { setIsProfileUpdated } from "@/providers/reduxjs-provider/slices/instagram";
 
 export type CurrentUserInfo = {
     username: string;
@@ -50,9 +54,10 @@ export type UserInfo = {
 };
 
 function Provided() {
-    const { currentUser, username, userId } = useAppSelector(
+    const { currentUser, username, userId, isProfileUpdated } = useAppSelector(
         (s) => s.instagram,
     );
+    const dispatch = useAppDispatch();
 
     const [currentUserInfo, setCurrentUserInfo] = useState<CurrentUserInfo>(
         {} as CurrentUserInfo,
@@ -60,7 +65,7 @@ function Provided() {
     const [userInfo, setUserInfo] = useState<UserInfo>({} as UserInfo);
 
     useEffect(() => {
-        if (username) {
+        if (username && isProfileUpdated) {
             const getUserInfo = async () => {
                 try {
                     const res = await fetch("/instagram/api/user-info", {
@@ -78,13 +83,13 @@ function Provided() {
             };
 
             getUserInfo();
+            dispatch(setIsProfileUpdated(false));
         }
-    }, [username, currentUser]);
+    }, [username, currentUser, isProfileUpdated]);
 
     const path = usePathname();
     const isPathIncludesProfile = path.includes("profile");
-    const isCurrentUserProfile = path.includes(currentUserInfo.username);
-    console.log({ isCurrentUserProfile });
+    const isCurrentUserProfile = path.includes(currentUserInfo?.username);
 
     const [isAllShown, setIsAllShown] = useState<boolean>(false);
 

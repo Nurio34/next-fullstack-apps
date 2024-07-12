@@ -1,5 +1,9 @@
 import prisma from "@/lib/prisma-mongo-db";
-import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
+import {
+    useAppDispatch,
+    useAppSelector,
+} from "@/providers/reduxjs-provider/hooks";
+import { setIsProfileUpdated } from "@/providers/reduxjs-provider/slices/instagram";
 import { auth, getAuth, currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -25,16 +29,23 @@ type User = {
 };
 
 function UserHero() {
-    const { currentUser, username, userId } = useAppSelector(
+    const { currentUser, username, isProfileUpdated } = useAppSelector(
         (s) => s.instagram,
     );
+
+    const dispatch = useAppDispatch();
+
     const [user, setUser] = useState<User>({} as User);
     const isCurrentUserBlocked = user?.blocks?.some(
         (block) => block.blockedId === currentUser,
     );
 
     useEffect(() => {
-        if (username) {
+        dispatch(setIsProfileUpdated(true));
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (username && isProfileUpdated) {
             const getUserInfo = async () => {
                 try {
                     const res = await fetch("/instagram/api/user-hero", {
@@ -50,7 +61,7 @@ function UserHero() {
 
             getUserInfo();
         }
-    }, [username]);
+    }, [username, isProfileUpdated]);
 
     if (isCurrentUserBlocked) notFound();
 

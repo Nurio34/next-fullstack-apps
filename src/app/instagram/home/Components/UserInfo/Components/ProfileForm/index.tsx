@@ -2,9 +2,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { UserInfo } from "../../Provided";
 import { useEffect, useState } from "react";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Inputs, InputsSchema } from "@/app/instagram/types";
+import toast from "react-hot-toast";
+import { useAppDispatch } from "@/providers/reduxjs-provider/hooks";
+import {
+    setIsProfileUpdated,
+    setUsername,
+} from "@/providers/reduxjs-provider/slices/instagram";
 
 function ProfileForm({
     setIsUpdatingProfile,
@@ -13,13 +18,13 @@ function ProfileForm({
     setIsUpdatingProfile: React.Dispatch<React.SetStateAction<boolean>>;
     userInfo: Omit<UserInfo, "id" | "createdAt" | "updatedAt">;
 }) {
+    const dispatch = useAppDispatch();
+
     const { formState, handleSubmit, register, reset } = useForm<Inputs>({
         resolver: zodResolver(InputsSchema),
     });
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log({ data });
-
         try {
             const res = await fetch("/instagram/api/update-profile", {
                 method: "POST",
@@ -27,14 +32,21 @@ function ProfileForm({
             });
 
             const resData = await res.json();
-            console.log(resData);
-        } catch (error) {}
+            toast.success(resData);
+            dispatch(setIsProfileUpdated(true));
+        } catch (error) {
+            console.log(
+                "Unexpected error while 'onSubmit' in '/instagram/home/Components/UserInfo/Components/ProfileForm'",
+            );
+            throw new Error(
+                "Unexpected error while 'onSubmit' in '/instagram/home/Components/UserInfo/Components/ProfileForm'",
+            );
+        }
     };
 
     useEffect(() => {
         if (userInfo) {
             reset({
-                username: userInfo.username || "",
                 name: userInfo.name || "",
                 surname: userInfo.surname || "",
                 description: userInfo.description || "",
@@ -51,7 +63,6 @@ function ProfileForm({
     const { errors, isSubmitting, isSubmitSuccessful } = formState;
 
     const [isCanceling, setIsCanceling] = useState<boolean>(false);
-    console.log([isSubmitSuccessful]);
 
     useEffect(() => {
         if (isSubmitSuccessful) {
@@ -66,20 +77,7 @@ function ProfileForm({
             initial={{ height: 0 }}
             animate={{ height: "auto" }}
         >
-            <label htmlFor="username" className=" grid gap-y-[0.5vh]">
-                <input
-                    className="input input-sm input-primary w-full text-secondary placeholder:text-sm placeholder:font-light"
-                    id="username"
-                    placeholder="Username..."
-                    defaultValue={userInfo.username || ""}
-                    {...register("username")}
-                />
-                {errors.username && (
-                    <span className="text-error text-sm font-light font-mono">
-                        {errors.username.message}{" "}
-                    </span>
-                )}
-            </label>
+            <label htmlFor="username" className=" grid gap-y-[0.5vh]"></label>
             <label htmlFor="name" className=" grid gap-y-[0.5vh]">
                 <input
                     className="input input-sm input-primary w-full text-secondary placeholder:text-xs placeholder:font-light"

@@ -7,6 +7,7 @@ type ComponentsStateType = {
     currentUser: string;
     username: string;
     userId: string;
+    isProfileUpdated: boolean;
 };
 
 const initialState: ComponentsStateType = {
@@ -14,6 +15,7 @@ const initialState: ComponentsStateType = {
     currentUser: "",
     username: "",
     userId: "",
+    isProfileUpdated: true,
 };
 
 export const componentsSlice = createSlice({
@@ -32,11 +34,19 @@ export const componentsSlice = createSlice({
         setUserId: (state, action: PayloadAction<string>) => {
             state.userId = action.payload;
         },
+        setIsProfileUpdated: (state, action: PayloadAction<boolean>) => {
+            state.isProfileUpdated = action.payload;
+        },
     },
 });
 
-export const { setStoriesMaxWidth, setCurrentUser, setUsername, setUserId } =
-    componentsSlice.actions;
+export const {
+    setStoriesMaxWidth,
+    setCurrentUser,
+    setUsername,
+    setUserId,
+    setIsProfileUpdated,
+} = componentsSlice.actions;
 
 // export const selectCount = (state: RootState) => state.counter.isOpen
 
