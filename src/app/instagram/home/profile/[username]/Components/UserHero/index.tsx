@@ -25,7 +25,9 @@ type User = {
 };
 
 function UserHero() {
-    const { currentUser, username } = useAppSelector((s) => s.instagram);
+    const { currentUser, username, userId } = useAppSelector(
+        (s) => s.instagram,
+    );
     const [user, setUser] = useState<User>({} as User);
     const isCurrentUserBlocked = user?.blocks?.some(
         (block) => block.blockedId === currentUser,
