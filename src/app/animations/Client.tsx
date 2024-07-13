@@ -11,6 +11,10 @@ function Client() {
         "loading",
         "follow",
         "earth",
+        "blood",
+        "2dTo3d",
+        "blast",
+        "indicator",
     ];
 
     return (
