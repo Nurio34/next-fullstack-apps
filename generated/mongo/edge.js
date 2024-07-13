@@ -196,7 +196,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\pc\\Desktop\\next-fullstack-apps\\generated\\mongo",
+      "value": "C:\\Users\\Resepsiyon\\next-fullstack-apps\\generated\\mongo",
       "fromEnvVar": null
     },
     "config": {
@@ -210,7 +210,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\pc\\Desktop\\next-fullstack-apps\\prisma\\mongo.prisma",
+    "sourceFilePath": "C:\\Users\\Resepsiyon\\next-fullstack-apps\\prisma\\mongo.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

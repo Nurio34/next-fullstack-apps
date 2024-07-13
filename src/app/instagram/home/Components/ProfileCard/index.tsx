@@ -5,12 +5,10 @@ import Client from "./Client";
 async function ProfileCard() {
     const { userId } = auth();
 
-    if (!userId) return null;
-
     try {
         const getUserInfo = await prisma.user.findFirst({
             where: {
-                id: userId,
+                id: userId!,
             },
             select: {
                 avatar: true,
@@ -21,6 +19,7 @@ async function ProfileCard() {
                 followers: true,
             },
         });
+        console.log({ getUserInfo });
 
         return <Client getUserInfo={getUserInfo} />;
     } catch (error) {

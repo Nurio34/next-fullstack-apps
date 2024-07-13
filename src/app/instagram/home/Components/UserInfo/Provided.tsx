@@ -40,15 +40,15 @@ export type CurrentUserInfo = {
 export type UserInfo = {
     id: string;
     username: string;
-    avatar: string | null;
-    cover: string | null;
-    name: string | null;
-    surname: string | null;
-    description: string | null;
-    city: string | null;
-    school: string | null;
-    work: string | null;
-    website: string | null;
+    avatar: string | undefined;
+    cover: string | undefined;
+    name: string | undefined;
+    surname: string | undefined;
+    description: string | undefined;
+    city: string | undefined;
+    school: string | undefined;
+    work: string | undefined;
+    website: string | undefined;
     createdAt: Date;
     updatedAt: Date;
 };

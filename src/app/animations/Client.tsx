@@ -4,7 +4,14 @@ import Link from "next/link";
 function Client() {
     const { headerHeight, mainHeight } = useAppSelector((s) => s.components);
 
-    const animations = ["heroes", "scroll", "cubes", "loading", "follow"];
+    const animations = [
+        "heroes",
+        "scroll",
+        "cubes",
+        "loading",
+        "follow",
+        "earth",
+    ];
 
     return (
         <main style={{ minHeight: mainHeight }}>

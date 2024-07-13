@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma-mongo-db";
 import { auth } from "@clerk/nextjs/server";
-import { z } from "zod";
 import { InputsSchema } from "../../types";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: Request) {
     const formData = await req.json();
@@ -41,7 +41,6 @@ export async function POST(req: Request) {
             { status: 404 },
         );
     }
-    console.log({ zodValidation });
 
     try {
         const res = await prisma.user.update({
@@ -61,7 +60,7 @@ export async function POST(req: Request) {
             );
         }
 
-        return Response.json("Profile Updated Succesfully", { status: 404 });
+        return Response.json("Profile Updated Succesfully", { status: 200 });
     } catch (error) {
         console.log(
             "Unexpected error while 'prisma.user.update' in '/instagram/api/update-profile'",
@@ -71,5 +70,7 @@ export async function POST(req: Request) {
             "Unexpected error while 'prisma.user.update' in '/instagram/api/update-profile'",
             { status: 404 },
         );
+    } finally {
+        revalidatePath("/instagram/home");
     }
 }

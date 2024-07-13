@@ -7,22 +7,28 @@ import { Inputs, InputsSchema } from "@/app/instagram/types";
 import toast from "react-hot-toast";
 import { useAppDispatch } from "@/providers/reduxjs-provider/hooks";
 import {
+    CldUploadWidget,
+    CloudinaryUploadWidgetResults,
+} from "next-cloudinary";
+import {
     setIsProfileUpdated,
     setUsername,
 } from "@/providers/reduxjs-provider/slices/instagram";
+import Image from "next/image";
 
 function ProfileForm({
     setIsUpdatingProfile,
     userInfo,
 }: {
     setIsUpdatingProfile: React.Dispatch<React.SetStateAction<boolean>>;
-    userInfo: Omit<UserInfo, "id" | "createdAt" | "updatedAt">;
+    userInfo: Omit<UserInfo, "username" | "id" | "createdAt" | "updatedAt">;
 }) {
     const dispatch = useAppDispatch();
 
-    const { formState, handleSubmit, register, reset } = useForm<Inputs>({
-        resolver: zodResolver(InputsSchema),
-    });
+    const { formState, handleSubmit, register, reset, setValue } =
+        useForm<Inputs>({
+            resolver: zodResolver(InputsSchema),
+        });
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         try {
@@ -30,6 +36,15 @@ function ProfileForm({
                 method: "POST",
                 body: JSON.stringify(data),
             });
+
+            if (!res.ok) {
+                console.log(
+                    "Error while 'onSubmit' in '/instagram/home/Components/UserInfo/Components/ProfileForm'",
+                );
+                throw new Error(
+                    "Error while 'onSubmit' in '/instagram/home/Components/UserInfo/Components/ProfileForm'",
+                );
+            }
 
             const resData = await res.json();
             toast.success(resData);
@@ -69,6 +84,23 @@ function ProfileForm({
             setIsUpdatingProfile(false);
         }
     }, [isSubmitSuccessful]);
+
+    const [avatar, setAvatar] = useState<string | undefined>(undefined);
+    useEffect(() => {
+        setValue("avatar", avatar);
+    }, [avatar, setValue]);
+
+    const [cover, setCover] = useState<string | undefined>(undefined);
+    useEffect(() => {
+        setValue("cover", cover);
+    }, [cover, setValue]);
+
+    useEffect(() => {
+        setAvatar(userInfo.avatar);
+        setCover(userInfo.cover);
+    }, [userInfo.avatar]);
+    console.log(avatar);
+
     return (
         <motion.form
             onSubmit={handleSubmit(onSubmit)}
@@ -77,7 +109,6 @@ function ProfileForm({
             initial={{ height: 0 }}
             animate={{ height: "auto" }}
         >
-            <label htmlFor="username" className=" grid gap-y-[0.5vh]"></label>
             <label htmlFor="name" className=" grid gap-y-[0.5vh]">
                 <input
                     className="input input-sm input-primary w-full text-secondary placeholder:text-xs placeholder:font-light"
@@ -176,6 +207,66 @@ function ProfileForm({
                     </span>
                 )}
             </label>
+            <div className="flex justify-between items-center">
+                <div className="flex gap-[0.5vw]">
+                    <figure className="relative w-[2vw] aspect-square rounded-full overflow-hidden">
+                        <Image
+                            src={avatar || "/instagram/no_avatar.webp"}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            alt={`avatar of ${userInfo.name}`}
+                        />
+                    </figure>
+                    <CldUploadWidget
+                        uploadPreset="instagram"
+                        onSuccess={(res: CloudinaryUploadWidgetResults) => {
+                            if (!res.event) return;
+                            else if (typeof res.info !== "string") {
+                                setAvatar(res.info!.secure_url);
+                            }
+                        }}
+                    >
+                        {({ open }) => (
+                            <button
+                                type="button"
+                                className=" text-warning underline underline-offset-4"
+                                onClick={() => open()}
+                            >
+                                Change Avatar
+                            </button>
+                        )}
+                    </CldUploadWidget>
+                </div>
+                <div className="flex gap-[0.5vw] items-center">
+                    <figure className="relative w-[4vw] aspect-video rounded-md overflow-hidden">
+                        <Image
+                            src={cover || "/instagram/no_cover.webp"}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            alt={`cover of ${userInfo.name}`}
+                        />
+                    </figure>
+                    <CldUploadWidget
+                        uploadPreset="instagram"
+                        onSuccess={(res: CloudinaryUploadWidgetResults) => {
+                            if (!res.event) return;
+                            else if (typeof res.info !== "string") {
+                                setCover(res.info!.secure_url);
+                            }
+                        }}
+                    >
+                        {({ open }) => (
+                            <button
+                                type="button"
+                                className=" text-warning underline underline-offset-4"
+                                onClick={() => open()}
+                            >
+                                Change Cover
+                            </button>
+                        )}
+                    </CldUploadWidget>
+                </div>
+            </div>
             <div className="flex gap-[2vw]">
                 <button
                     type="button"
