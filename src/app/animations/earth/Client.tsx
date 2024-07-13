@@ -26,6 +26,7 @@ function Client() {
                     .map((signal, index) => {
                         return (
                             <span
+                                key={index}
                                 className="Animations_Earth_Span block absolute top-0 left-0 w-full h-full rounded-full"
                                 style={
                                     {
