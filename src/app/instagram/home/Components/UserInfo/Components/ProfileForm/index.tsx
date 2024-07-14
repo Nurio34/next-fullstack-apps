@@ -83,7 +83,7 @@ function ProfileForm({
         if (isSubmitSuccessful) {
             setIsUpdatingProfile(false);
         }
-    }, [isSubmitSuccessful]);
+    }, [setIsUpdatingProfile, isSubmitSuccessful]);
 
     const [avatar, setAvatar] = useState<string | undefined>(undefined);
     useEffect(() => {
@@ -98,8 +98,7 @@ function ProfileForm({
     useEffect(() => {
         setAvatar(userInfo.avatar);
         setCover(userInfo.cover);
-    }, [userInfo.avatar]);
-    console.log(avatar);
+    }, [userInfo.avatar, userInfo.cover]);
 
     return (
         <motion.form

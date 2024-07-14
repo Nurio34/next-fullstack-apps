@@ -85,7 +85,7 @@ function Provided() {
             getUserInfo();
             dispatch(setIsProfileUpdated(false));
         }
-    }, [username, currentUser, isProfileUpdated]);
+    }, [username, currentUser, isProfileUpdated, dispatch]);
 
     const path = usePathname();
     const isPathIncludesProfile = path.includes("profile");

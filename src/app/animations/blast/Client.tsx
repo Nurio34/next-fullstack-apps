@@ -80,6 +80,7 @@ function Client() {
                                         );
                                         return (
                                             <span
+                                                key={ind}
                                                 className="block Animate_Blast_Span w-10 aspect-square bg-gradient-to-r from-error to-info rounded-full"
                                                 style={
                                                     {

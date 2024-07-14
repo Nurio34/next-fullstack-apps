@@ -25,7 +25,7 @@ function Client() {
         window.addEventListener("resize", updateWidth);
 
         return () => window.removeEventListener("resize", updateWidth);
-    }, []);
+    }, [dispatch]);
 
     return <div ref={divRef} className="absolute bg-primary w-full"></div>;
 }
