@@ -2,7 +2,7 @@ import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
 import Link from "next/link";
 
 function Client() {
-    const { headerHeight, mainHeight } = useAppSelector((s) => s.components);
+    const { mainHeight } = useAppSelector((s) => s.components);
 
     const animations = [
         "heroes",
@@ -15,6 +15,8 @@ function Client() {
         "2dTo3d",
         "blast",
         "indicator",
+        "day&night",
+        "image-pierce",
     ];
 
     return (

@@ -7,21 +7,24 @@ function Client() {
 
     const box = 9;
 
-    const [position, setPosition] = useState({ left: 0, top: 0 });
+    const [position, setPosition] = useState<{ left: any; top: any }>({
+        left: 0,
+        top: 0,
+    });
 
     return (
         <main
             style={{ minHeight: mainHeight }}
-            className="Animate_Indicator_Main  flex justify-center items-center overflow-hidden"
+            className="Animate_Indicator_Main  flex justify-center items-center "
         >
-            <section className=" grid grid-cols-3 gap-[1vw] p-[1vw] overflow-hidden">
+            <section className=" grid grid-cols-3 gap-[1vw] relative overflow-hidden">
                 {Array(box)
                     .fill(null)
                     .map((box, ind) => {
                         return (
                             <div
                                 key={ind}
-                                className=" w-[10vw]  aspect-square bg-base-300"
+                                className=" w-[10vw]  aspect-square bg-base-300 relative"
                                 onMouseEnter={(e) => {
                                     console.log(
                                         e.currentTarget.offsetLeft,
@@ -39,7 +42,7 @@ function Client() {
                                         return (
                                             <span
                                                 key={ind}
-                                                className={`block absolute w-[4vw] rounded-full aspect-square bg-base-100 z-10 pointer-events-none
+                                                className={`block absolute w-[4vw] rounded-full aspect-square bg-base-100 z-30 pointer-events-none
                                                     ${
                                                         ind === 2 || ind === 3
                                                             ? "bottom-0"
@@ -76,19 +79,17 @@ function Client() {
                                             ></span>
                                         );
                                     })}
-                                {ind === 0 && (
-                                    <span
-                                        className="Animate_Indicator_Span w-[10vw] absolute aspect-square bg-info pointer-events-none transition-all"
-                                        style={{
-                                            left: position.left,
-                                            top: position.top,
-                                            transitionDuration: "1s",
-                                        }}
-                                    ></span>
-                                )}
                             </div>
                         );
                     })}
+                <span
+                    className="Animate_Indicator_Span w-[10vw] absolute z-20  aspect-square bg-info pointer-events-none transition-all"
+                    style={{
+                        left: position.left,
+                        top: position.top,
+                        transitionDuration: "1s",
+                    }}
+                ></span>
             </section>
         </main>
     );
