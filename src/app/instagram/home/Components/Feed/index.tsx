@@ -7,6 +7,34 @@ export type PostType = {
     createdAt: Date;
     updatedAt: Date;
     userId: string;
+    likes: {
+        id: string;
+        createdAt: Date;
+        userId: string;
+        postId: string | null;
+        commentId: string | null;
+    }[];
+    comments: {
+        id: string;
+        decsription: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        postId: string;
+        user: {
+            username: string;
+            name: string | null;
+            avatar: string | null;
+            surname: string | null;
+        };
+        likes: {
+            id: string;
+            createdAt: Date;
+            userId: string;
+            postId: string | null;
+            commentId: string | null;
+        }[];
+    }[];
 };
 
 async function Feed({ posts }: { posts: PostType[] }) {

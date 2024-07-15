@@ -19,7 +19,6 @@ async function ProfileCard() {
                 followers: true,
             },
         });
-        console.log({ getUserInfo });
 
         return <Client getUserInfo={getUserInfo} />;
     } catch (error) {

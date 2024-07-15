@@ -17,7 +17,7 @@ async function Post({ post }: { post: PostType }) {
         <li className=" space-y-[1vh]">
             <Header ownerOfPost={ownerOfPost!} />
             <Content post={post} />
-            <Actions />
+            <Actions post={post} />
             <Comment post={post} />
         </li>
     );

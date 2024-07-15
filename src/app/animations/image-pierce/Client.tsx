@@ -32,7 +32,6 @@ function Client() {
         { id: 1, isPierced: false },
         { id: 2, isPierced: false },
     ]);
-    console.log(size);
 
     return (
         <main

@@ -2,7 +2,6 @@ import prisma from "@/lib/prisma-mongo-db";
 
 export async function POST(req: Request) {
     const username = await req.json();
-    console.log({ username });
 
     try {
         if (!username) {
@@ -11,7 +10,6 @@ export async function POST(req: Request) {
                 { status: 404 },
             );
         }
-        console.log("username", username);
 
         const postImages = await prisma.post.findMany({
             where: {

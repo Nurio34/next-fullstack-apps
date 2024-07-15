@@ -29,7 +29,7 @@ function Header({ ownerOfPost }: { ownerOfPost: OwnerOfPostType }) {
                 className="relative w-[2vw] aspect-square min-w-[39px] rounded-full overflow-hidden border-[1px] border-base-content"
             >
                 <Image
-                    src={avatar || "instagram/no_avatar.webp"}
+                    src={avatar || "/instagram/no_avatar.webp"}
                     fill
                     alt={`avatar of ${username}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

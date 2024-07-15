@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { PostType } from "../..";
 import Header from "./Components/Header";
 import Content from "./Components/Content";
 import Actions from "./Components/Actions";
 import Comment from "./Components/Comment";
 import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
+import { PostType } from "@/app/instagram/home/Components/Feed";
 
 export type OwnerOfPost = {
     username: string;
@@ -37,9 +37,9 @@ function Post({ post }: { post: PostType }) {
 
     return (
         <li className=" space-y-[1vh]">
-            <Header ownerOfPost={ownerOfPost} />
+            <Header ownerOfPost={ownerOfPost!} />
             <Content post={post} />
-            <Actions />
+            <Actions post={post} />
             <Comment post={post} />
         </li>
     );

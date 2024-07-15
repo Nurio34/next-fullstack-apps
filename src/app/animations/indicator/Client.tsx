@@ -26,10 +26,6 @@ function Client() {
                                 key={ind}
                                 className=" w-[10vw]  aspect-square bg-base-300 relative"
                                 onMouseEnter={(e) => {
-                                    console.log(
-                                        e.currentTarget.offsetLeft,
-                                        e.currentTarget.offsetTop,
-                                    );
                                     setPosition({
                                         left: e.currentTarget.offsetLeft,
                                         top: e.currentTarget.offsetTop,
@@ -69,13 +65,6 @@ function Client() {
                                                             : ""
                                                     }
                                                 `}
-                                                onMouseEnter={(
-                                                    e: React.MouseEvent<HTMLSpanElement>,
-                                                ) => {
-                                                    console.log(
-                                                        e.currentTarget,
-                                                    );
-                                                }}
                                             ></span>
                                         );
                                     })}

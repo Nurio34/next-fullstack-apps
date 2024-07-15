@@ -7,7 +7,6 @@ function Client() {
 
     const [bunchOfParticles, setBunchOfParticles] = useState<number>(0);
     const [particles, setParticles] = useState<number>(50);
-    console.log(bunchOfParticles);
 
     useEffect(() => {
         const time = setTimeout(() => {

@@ -1,19 +1,35 @@
+import { commentToPost } from "@/app/instagram/action/comment";
 import prisma from "@/lib/prisma-mongo-db";
 import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import SubmitButton from "./Components/SubmitButton";
 
-async function CommentForm() {
+async function CommentForm({ postId }: { postId: string }) {
     const { userId } = auth();
 
-    if (!userId) redirect("/instagram");
+    if (!userId) {
+        console.log(
+            "Error while getting 'userId' in '/instagram/home/feed/post/comment/commentform'",
+        );
+        throw new Error(
+            "Error while getting 'userId' in '/instagram/home/feed/post/comment/commentform'",
+        );
+    }
 
     const currentUserInfo = await prisma.user.findUnique({
         where: { id: userId },
         select: { avatar: true, username: true },
     });
 
-    if (!currentUserInfo) redirect("/instagram");
+    if (!currentUserInfo) {
+        console.log(
+            "Error while getting 'currentUserInfo' in '/instagram/home/feed/post/comment/commentform'",
+        );
+        throw new Error(
+            "Error while getting 'currentUserInfo' in '/instagram/home/feed/post/comment/commentform'",
+        );
+    }
 
     const { avatar, username } = currentUserInfo;
 
@@ -27,21 +43,22 @@ async function CommentForm() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </figure>
-            <form action="sendComment" className="grow relative">
+            <form action={commentToPost} className="grow relative">
+                <input type="hidden" name="userId" value={userId} />
+                <input type="hidden" name="postId" value={postId} />
                 <label htmlFor="comment">
                     <textarea
+                        rows={3}
                         name="comment"
                         id="comment"
                         placeholder="Leave your comment ..."
                         className=" textarea textarea-bordered w-full"
                     ></textarea>
                 </label>
-                <button
-                    type="button"
-                    className=" absolute top-1/2 right-[1vw] -translate-y-1/2"
-                >
-                    🙂
-                </button>
+                <div className=" absolute top-1/2 right-[1vw] -translate-y-1/2 grid gap-y-[1vh]">
+                    <button type="submit">🙂</button>
+                    <SubmitButton />
+                </div>
             </form>
         </div>
     );

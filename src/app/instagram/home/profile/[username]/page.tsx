@@ -1,6 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
 import Client from "./Client";
-import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma-mongo-db";
 
 async function Profile({ params }: { params: { username: string } }) {
@@ -13,17 +12,37 @@ async function Profile({ params }: { params: { username: string } }) {
         return;
     }
 
-    const userPosts = await prisma.user.findUnique({
+    const userIdAndPosts = await prisma.user.findUnique({
         where: {
             username: params.username,
         },
         select: {
-            posts: true,
             id: true,
+            posts: {
+                include: {
+                    likes: true,
+                    comments: {
+                        orderBy: {
+                            createdAt: "desc",
+                        },
+                        include: {
+                            user: {
+                                select: {
+                                    username: true,
+                                    name: true,
+                                    surname: true,
+                                    avatar: true,
+                                },
+                            },
+                            likes: true,
+                        },
+                    },
+                },
+            },
         },
     });
 
-    if (!userPosts) {
+    if (!userIdAndPosts) {
         console.log(
             "Error while 'getting userPosts' in '/instagram/home/profile/[username]/page.tsx'",
         );
@@ -34,8 +53,8 @@ async function Profile({ params }: { params: { username: string } }) {
         <Client
             currentUserId={userId!}
             username={params.username}
-            userId={userPosts.id}
-            posts={userPosts.posts}
+            userId={userIdAndPosts.id}
+            posts={userIdAndPosts.posts}
         />
     );
 }
