@@ -1,5 +1,5 @@
+import { PostType } from "@/app/instagram/home/Components/Feed";
 import Image from "next/image";
-import { PostType } from "../../../..";
 
 function Content({ post }: { post: PostType }) {
     return (
