@@ -1,15 +1,7 @@
 "use client";
 
+import { PostType } from "@/app/instagram/home/Components/Feed";
 import Post from "./Components/Post";
-
-export type PostType = {
-    id: string;
-    img: string | null;
-    decsription: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-};
 
 function Feed({ posts }: { posts: PostType[] }) {
     return (

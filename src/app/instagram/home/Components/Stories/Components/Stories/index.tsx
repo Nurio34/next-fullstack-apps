@@ -1,5 +1,7 @@
 import { useAppSelector } from "@/providers/reduxjs-provider/hooks";
-import AddStoryButton from "./AddStoryButton";
+import AddStory from "./AddStory";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 function Stories() {
     const mockStories = [
@@ -24,7 +26,7 @@ function Stories() {
             `}
             style={{ maxWidth: storiesMaxWidth }}
         >
-            <AddStoryButton />
+            <AddStory />
             <ul className=" contents">
                 {mockStories.map((story) => {
                     return (

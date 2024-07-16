@@ -19,6 +19,9 @@ async function Profile({ params }: { params: { username: string } }) {
         select: {
             id: true,
             posts: {
+                orderBy: {
+                    createdAt: "desc",
+                },
                 include: {
                     likes: true,
                     comments: {

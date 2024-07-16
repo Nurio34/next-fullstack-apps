@@ -5,7 +5,6 @@ import { useFormStatus } from "react-dom";
 
 function SubmitButton() {
     const { pending, action } = useFormStatus();
-    console.log(pending);
     const ResetBtn = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {

@@ -3,57 +3,58 @@
 import prisma from "@/lib/prisma-mongo-db";
 import { revalidatePath } from "next/cache";
 
-export const like = async (formData: FormData) => {
+export const likeComment = async (formData: FormData) => {
     const userId = formData.get("userId") as string;
-    const postId = formData.get("postId") as string;
+    const commentId = formData.get("commentId") as string;
+    console.log({ userId, commentId });
 
     try {
         const res = await prisma.like.create({
             data: {
                 userId,
-                postId,
+                commentId,
             },
         });
 
         if (!res) {
             console.log(
-                "Error while 'prisma.like.create' in 'instagram/action/like-posts.ts'",
+                "Error while 'prisma.like.create' in 'instagram/action/like-comment.ts'",
             );
             throw new Error(
-                "Error while 'prisma.like.create' in 'instagram/action/like-posts.ts'",
+                "Error while 'prisma.like.create' in 'instagram/action/like-comment.ts'",
             );
         }
 
         revalidatePath("/instagram/home");
     } catch (error) {
         console.log(
-            "Unexpected error while 'prisma.like.create' in 'instagram/action/like-posts.ts'",
+            "Unexpected error while 'prisma.like.create' in 'instagram/action/like-comment.ts'",
             error,
         );
         throw new Error(
-            "Unexpected error while 'prisma.like.create' in 'instagram/action/like-posts.ts'",
+            "Unexpected error while 'prisma.like.create' in 'instagram/action/like-comment.ts'",
         );
     }
 };
 
-export const dislike = async (formData: FormData) => {
+export const dislikeComment = async (formData: FormData) => {
     const userId = formData.get("userId") as string;
-    const postId = formData.get("postId") as string;
+    const commentId = formData.get("commentId") as string;
 
     try {
         const likeObj = await prisma.like.findFirst({
             where: {
-                postId,
+                commentId,
                 userId,
             },
         });
 
         if (!likeObj) {
             console.log(
-                "Error while 'prisma.like.findFirst' in 'instagram/action/like-posts.ts'",
+                "Error while 'prisma.like.findFirst' in 'instagram/action/like-comment.ts'",
             );
             throw new Error(
-                "Error while 'prisma.like.findFirst' in 'instagram/action/like-posts.ts'",
+                "Error while 'prisma.like.findFirst' in 'instagram/action/like-comment.ts'",
             );
         }
 
@@ -65,10 +66,10 @@ export const dislike = async (formData: FormData) => {
 
         if (!res) {
             console.log(
-                "Error while 'prisma.like.delete' in 'instagram/action/like-posts.ts'",
+                "Error while 'prisma.like.delete' in 'instagram/action/like-comment.ts'",
             );
             throw new Error(
-                "Error while 'prisma.like.delete' in 'instagram/action/like-posts.ts'",
+                "Error while 'prisma.like.delete' in 'instagram/action/like-comment.ts'",
             );
         }
 
@@ -76,11 +77,11 @@ export const dislike = async (formData: FormData) => {
         return "Success";
     } catch (error) {
         console.log(
-            "Unexpected error while 'prisma.like.delete' in 'instagram/action/like-posts.ts'",
+            "Unexpected error while 'prisma.like.delete' in 'instagram/action/like-comment.ts'",
             error,
         );
         throw new Error(
-            "Unexpected error while 'prisma.like.delete' in 'instagram/action/like-posts.ts'",
+            "Unexpected error while 'prisma.like.delete' in 'instagram/action/like-comment.ts'",
         );
     }
 };

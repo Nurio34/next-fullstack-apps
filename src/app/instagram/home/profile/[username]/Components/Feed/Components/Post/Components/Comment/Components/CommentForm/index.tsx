@@ -3,6 +3,8 @@ import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SubmitButton from "./Components/SubmitButton";
+import { useFormState } from "react-hook-form";
+import { commentToPost } from "@/app/instagram/action/comment";
 
 export type CurrentUserInfoType = {
     avatar: string | null;
@@ -53,6 +55,10 @@ function CommentForm({ postId }: { postId: string }) {
 
     const { avatar, username } = currentUserInfo;
 
+    const commentToPostAction = async (formData: FormData) => {
+        await commentToPost(formData);
+    };
+
     return (
         <div className="flex items-start gap-[1vw]">
             <figure className="relative w-[1vw] aspect-square min-w-[17,19px] rounded-full overflow-hidden border-[1px] border-base-content">
@@ -63,7 +69,7 @@ function CommentForm({ postId }: { postId: string }) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </figure>
-            <form action={"commentToPost"} className="grow relative">
+            <form action={commentToPostAction} className="grow relative">
                 <input type="hidden" name="userId" value={userId} />
                 <input type="hidden" name="postId" value={postId} />
                 <label htmlFor="comment">

@@ -35,14 +35,14 @@ async function Home() {
             "Error while getting 'followedUsers' in '/instagram/home/page.tsx'",
         );
     }
-    console.log({ followedUsers });
 
     const followedUsersPosts = await prisma.post.findMany({
         where: {
             userId: {
-                in: followedUsers,
+                in: [userId, ...followedUsers],
             },
         },
+        orderBy: { createdAt: "desc" },
         include: {
             likes: true,
             comments: {

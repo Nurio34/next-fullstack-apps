@@ -1,5 +1,5 @@
+import { CommentType } from "@/app/instagram/home/Components/Feed/Components/Post/Components/Comment/Components/Comments";
 import Image from "next/image";
-import { CommentType } from "..";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import LikeButton from "./LikeButton";
 

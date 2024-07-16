@@ -5,9 +5,8 @@ import CommentForm from "./Components/CommentForm";
 function Comment({ post }: { post: PostType }) {
     return (
         <div className=" space-y-[1vh]">
-            <div>hey</div>
             <CommentForm postId={post.id} />
-            {/* <Comments comments={post.comments} /> */}
+            <Comments comments={post.comments} />
         </div>
     );
 }
