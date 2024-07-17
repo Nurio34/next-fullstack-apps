@@ -51,7 +51,7 @@ model User {
     recivedRequests FollowRequest[] @relation("reciver")
     blocks          Block[]         @relation("blocker")
     blockedBys      Block[]         @relation("blocked")
-    story           Story?
+    story           Story[]
 
     @@map("users")
 }

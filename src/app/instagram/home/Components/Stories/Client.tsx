@@ -5,10 +5,21 @@ import { Provider } from "react-redux";
 import Stories from "./Components/Stories";
 import { usePathname } from "next/navigation";
 
-function Client() {
+export type Story = {
+    id: string;
+    createdAt: Date;
+    expiresAt: Date;
+    img: string;
+    userId: string;
+    user: {
+        username: string;
+    };
+};
+
+function Client({ stories }: { stories: Story[] }) {
     return (
         <Provider store={store}>
-            <Stories />
+            <Stories stories={stories} />
         </Provider>
     );
 }

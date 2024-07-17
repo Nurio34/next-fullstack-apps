@@ -1566,6 +1566,7 @@ export namespace Prisma {
     recivedRequests: number
     blocks: number
     blockedBys: number
+    story: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1578,6 +1579,7 @@ export namespace Prisma {
     recivedRequests?: boolean | UserCountOutputTypeCountRecivedRequestsArgs
     blocks?: boolean | UserCountOutputTypeCountBlocksArgs
     blockedBys?: boolean | UserCountOutputTypeCountBlockedBysArgs
+    story?: boolean | UserCountOutputTypeCountStoryArgs
   }
 
   // Custom InputTypes
@@ -1652,6 +1654,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountBlockedBysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BlockWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountStoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StoryWhereInput
   }
 
 
@@ -2940,7 +2949,7 @@ export namespace Prisma {
       recivedRequests: Prisma.$FollowRequestPayload<ExtArgs>[]
       blocks: Prisma.$BlockPayload<ExtArgs>[]
       blockedBys: Prisma.$BlockPayload<ExtArgs>[]
-      story: Prisma.$StoryPayload<ExtArgs> | null
+      story: Prisma.$StoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3328,7 +3337,7 @@ export namespace Prisma {
     recivedRequests<T extends User$recivedRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$recivedRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowRequestPayload<ExtArgs>, T, "findMany"> | Null>
     blocks<T extends User$blocksArgs<ExtArgs> = {}>(args?: Subset<T, User$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany"> | Null>
     blockedBys<T extends User$blockedBysArgs<ExtArgs> = {}>(args?: Subset<T, User$blockedBysArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany"> | Null>
-    story<T extends User$storyArgs<ExtArgs> = {}>(args?: Subset<T, User$storyArgs<ExtArgs>>): Prisma__StoryClient<$Result.GetResult<Prisma.$StoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    story<T extends User$storyArgs<ExtArgs> = {}>(args?: Subset<T, User$storyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StoryPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3889,6 +3898,11 @@ export namespace Prisma {
      */
     include?: StoryInclude<ExtArgs> | null
     where?: StoryWhereInput
+    orderBy?: StoryOrderByWithRelationInput | StoryOrderByWithRelationInput[]
+    cursor?: StoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StoryScalarFieldEnum | StoryScalarFieldEnum[]
   }
 
   /**
@@ -10813,7 +10827,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestListRelationFilter
     blocks?: BlockListRelationFilter
     blockedBys?: BlockListRelationFilter
-    story?: XOR<StoryNullableRelationFilter, StoryWhereInput> | null
+    story?: StoryListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -10839,7 +10853,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestOrderByRelationAggregateInput
     blocks?: BlockOrderByRelationAggregateInput
     blockedBys?: BlockOrderByRelationAggregateInput
-    story?: StoryOrderByWithRelationInput
+    story?: StoryOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10868,7 +10882,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestListRelationFilter
     blocks?: BlockListRelationFilter
     blockedBys?: BlockListRelationFilter
-    story?: XOR<StoryNullableRelationFilter, StoryWhereInput> | null
+    story?: StoryListRelationFilter
   }, "id" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -11421,7 +11435,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -11447,7 +11461,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -11472,7 +11486,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -11497,7 +11511,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -12061,9 +12075,10 @@ export namespace Prisma {
     none?: BlockWhereInput
   }
 
-  export type StoryNullableRelationFilter = {
-    is?: StoryWhereInput | null
-    isNot?: StoryWhereInput | null
+  export type StoryListRelationFilter = {
+    every?: StoryWhereInput
+    some?: StoryWhereInput
+    none?: StoryWhereInput
   }
 
   export type PostOrderByRelationAggregateInput = {
@@ -12087,6 +12102,10 @@ export namespace Prisma {
   }
 
   export type BlockOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12427,10 +12446,11 @@ export namespace Prisma {
     connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
   }
 
-  export type StoryCreateNestedOneWithoutUserInput = {
-    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput>
-    connectOrCreate?: StoryCreateOrConnectWithoutUserInput
-    connect?: StoryWhereUniqueInput
+  export type StoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput> | StoryCreateWithoutUserInput[] | StoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoryCreateOrConnectWithoutUserInput | StoryCreateOrConnectWithoutUserInput[]
+    createMany?: StoryCreateManyUserInputEnvelope
+    connect?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
   }
 
   export type PostUncheckedCreateNestedManyWithoutUserInput = {
@@ -12496,10 +12516,11 @@ export namespace Prisma {
     connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
   }
 
-  export type StoryUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput>
-    connectOrCreate?: StoryCreateOrConnectWithoutUserInput
-    connect?: StoryWhereUniqueInput
+  export type StoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput> | StoryCreateWithoutUserInput[] | StoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoryCreateOrConnectWithoutUserInput | StoryCreateOrConnectWithoutUserInput[]
+    createMany?: StoryCreateManyUserInputEnvelope
+    connect?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -12633,14 +12654,18 @@ export namespace Prisma {
     deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
   }
 
-  export type StoryUpdateOneWithoutUserNestedInput = {
-    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput>
-    connectOrCreate?: StoryCreateOrConnectWithoutUserInput
-    upsert?: StoryUpsertWithoutUserInput
-    disconnect?: StoryWhereInput | boolean
-    delete?: StoryWhereInput | boolean
-    connect?: StoryWhereUniqueInput
-    update?: XOR<XOR<StoryUpdateToOneWithWhereWithoutUserInput, StoryUpdateWithoutUserInput>, StoryUncheckedUpdateWithoutUserInput>
+  export type StoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput> | StoryCreateWithoutUserInput[] | StoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoryCreateOrConnectWithoutUserInput | StoryCreateOrConnectWithoutUserInput[]
+    upsert?: StoryUpsertWithWhereUniqueWithoutUserInput | StoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: StoryCreateManyUserInputEnvelope
+    set?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    disconnect?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    delete?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    connect?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    update?: StoryUpdateWithWhereUniqueWithoutUserInput | StoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: StoryUpdateManyWithWhereWithoutUserInput | StoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: StoryScalarWhereInput | StoryScalarWhereInput[]
   }
 
   export type PostUncheckedUpdateManyWithoutUserNestedInput = {
@@ -12769,14 +12794,18 @@ export namespace Prisma {
     deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
   }
 
-  export type StoryUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput>
-    connectOrCreate?: StoryCreateOrConnectWithoutUserInput
-    upsert?: StoryUpsertWithoutUserInput
-    disconnect?: StoryWhereInput | boolean
-    delete?: StoryWhereInput | boolean
-    connect?: StoryWhereUniqueInput
-    update?: XOR<XOR<StoryUpdateToOneWithWhereWithoutUserInput, StoryUpdateWithoutUserInput>, StoryUncheckedUpdateWithoutUserInput>
+  export type StoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput> | StoryCreateWithoutUserInput[] | StoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: StoryCreateOrConnectWithoutUserInput | StoryCreateOrConnectWithoutUserInput[]
+    upsert?: StoryUpsertWithWhereUniqueWithoutUserInput | StoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: StoryCreateManyUserInputEnvelope
+    set?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    disconnect?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    delete?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    connect?: StoryWhereUniqueInput | StoryWhereUniqueInput[]
+    update?: StoryUpdateWithWhereUniqueWithoutUserInput | StoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: StoryUpdateManyWithWhereWithoutUserInput | StoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: StoryScalarWhereInput | StoryScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutPostsInput = {
@@ -13440,6 +13469,10 @@ export namespace Prisma {
     create: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput>
   }
 
+  export type StoryCreateManyUserInputEnvelope = {
+    data: StoryCreateManyUserInput | StoryCreateManyUserInput[]
+  }
+
   export type PostUpsertWithWhereUniqueWithoutUserInput = {
     where: PostWhereUniqueInput
     update: XOR<PostUpdateWithoutUserInput, PostUncheckedUpdateWithoutUserInput>
@@ -13649,27 +13682,31 @@ export namespace Prisma {
     data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyWithoutBlockedInput>
   }
 
-  export type StoryUpsertWithoutUserInput = {
+  export type StoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: StoryWhereUniqueInput
     update: XOR<StoryUpdateWithoutUserInput, StoryUncheckedUpdateWithoutUserInput>
     create: XOR<StoryCreateWithoutUserInput, StoryUncheckedCreateWithoutUserInput>
-    where?: StoryWhereInput
   }
 
-  export type StoryUpdateToOneWithWhereWithoutUserInput = {
-    where?: StoryWhereInput
+  export type StoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: StoryWhereUniqueInput
     data: XOR<StoryUpdateWithoutUserInput, StoryUncheckedUpdateWithoutUserInput>
   }
 
-  export type StoryUpdateWithoutUserInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    img?: StringFieldUpdateOperationsInput | string
+  export type StoryUpdateManyWithWhereWithoutUserInput = {
+    where: StoryScalarWhereInput
+    data: XOR<StoryUpdateManyMutationInput, StoryUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type StoryUncheckedUpdateWithoutUserInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    img?: StringFieldUpdateOperationsInput | string
+  export type StoryScalarWhereInput = {
+    AND?: StoryScalarWhereInput | StoryScalarWhereInput[]
+    OR?: StoryScalarWhereInput[]
+    NOT?: StoryScalarWhereInput | StoryScalarWhereInput[]
+    id?: StringFilter<"Story"> | string
+    createdAt?: DateTimeFilter<"Story"> | Date | string
+    expiresAt?: DateTimeFilter<"Story"> | Date | string
+    img?: StringFilter<"Story"> | string
+    userId?: StringFilter<"Story"> | string
   }
 
   export type UserCreateWithoutPostsInput = {
@@ -13694,7 +13731,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPostsInput = {
@@ -13719,7 +13756,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPostsInput = {
@@ -13809,7 +13846,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostsInput = {
@@ -13833,7 +13870,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type LikeUpsertWithWhereUniqueWithoutPostInput = {
@@ -13890,7 +13927,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
@@ -13915,7 +13952,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -14003,7 +14040,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -14027,7 +14064,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PostUpsertWithoutCommentsInput = {
@@ -14097,7 +14134,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLikesInput = {
@@ -14122,7 +14159,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLikesInput = {
@@ -14210,7 +14247,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLikesInput = {
@@ -14234,7 +14271,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PostUpsertWithoutLikesInput = {
@@ -14315,7 +14352,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFollowingsInput = {
@@ -14340,7 +14377,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFollowingsInput = {
@@ -14370,7 +14407,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFollowersInput = {
@@ -14395,7 +14432,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFollowersInput = {
@@ -14435,7 +14472,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFollowingsInput = {
@@ -14459,7 +14496,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutFollowersInput = {
@@ -14494,7 +14531,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -14518,7 +14555,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSentRequestsInput = {
@@ -14543,7 +14580,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSentRequestsInput = {
@@ -14568,7 +14605,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSentRequestsInput = {
@@ -14598,7 +14635,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRecivedRequestsInput = {
@@ -14623,7 +14660,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRecivedRequestsInput = {
@@ -14663,7 +14700,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSentRequestsInput = {
@@ -14687,7 +14724,7 @@ export namespace Prisma {
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutRecivedRequestsInput = {
@@ -14722,7 +14759,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRecivedRequestsInput = {
@@ -14746,7 +14783,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutBlocksInput = {
@@ -14771,7 +14808,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blockedBys?: BlockCreateNestedManyWithoutBlockedInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBlocksInput = {
@@ -14796,7 +14833,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blockedBys?: BlockUncheckedCreateNestedManyWithoutBlockedInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBlocksInput = {
@@ -14826,7 +14863,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestCreateNestedManyWithoutReciverInput
     blocks?: BlockCreateNestedManyWithoutBlockerInput
-    story?: StoryCreateNestedOneWithoutUserInput
+    story?: StoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBlockedBysInput = {
@@ -14851,7 +14888,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUncheckedCreateNestedManyWithoutSenderInput
     recivedRequests?: FollowRequestUncheckedCreateNestedManyWithoutReciverInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBlockerInput
-    story?: StoryUncheckedCreateNestedOneWithoutUserInput
+    story?: StoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBlockedBysInput = {
@@ -14891,7 +14928,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blockedBys?: BlockUpdateManyWithoutBlockedNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBlocksInput = {
@@ -14915,7 +14952,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blockedBys?: BlockUncheckedUpdateManyWithoutBlockedNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutBlockedBysInput = {
@@ -14950,7 +14987,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUpdateManyWithoutReciverNestedInput
     blocks?: BlockUpdateManyWithoutBlockerNestedInput
-    story?: StoryUpdateOneWithoutUserNestedInput
+    story?: StoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBlockedBysInput = {
@@ -14974,7 +15011,7 @@ export namespace Prisma {
     sentRequests?: FollowRequestUncheckedUpdateManyWithoutSenderNestedInput
     recivedRequests?: FollowRequestUncheckedUpdateManyWithoutReciverNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBlockerNestedInput
-    story?: StoryUncheckedUpdateOneWithoutUserNestedInput
+    story?: StoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutStoryInput = {
@@ -15150,6 +15187,13 @@ export namespace Prisma {
     blockerId: string
   }
 
+  export type StoryCreateManyUserInput = {
+    id?: string
+    createdAt?: Date | string
+    expiresAt: Date | string
+    img: string
+  }
+
   export type PostUpdateWithoutUserInput = {
     img?: NullableStringFieldUpdateOperationsInput | string | null
     decsription?: StringFieldUpdateOperationsInput | string
@@ -15304,6 +15348,24 @@ export namespace Prisma {
   export type BlockUncheckedUpdateManyWithoutBlockedInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     blockerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoryUpdateWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    img?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoryUncheckedUpdateWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    img?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StoryUncheckedUpdateManyWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    img?: StringFieldUpdateOperationsInput | string
   }
 
   export type LikeCreateManyPostInput = {

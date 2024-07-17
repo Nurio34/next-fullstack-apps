@@ -167,12 +167,12 @@ function Provided() {
                                                 <p className="flex gap-[0.5vw] items-center">
                                                     <FaUniversity size={20} />
                                                     Went to{" "}
-                                                    {userInfo?.city || ""}
+                                                    {userInfo?.school || ""}
                                                 </p>
                                                 <p className="flex gap-[0.5vw] items-center">
                                                     <MdWorkOutline size={20} />
                                                     Works at{" "}
-                                                    {userInfo?.city || ""}
+                                                    {userInfo?.work || ""}
                                                 </p>
                                                 <div className="flex items-center justify-between">
                                                     <p className="flex gap-[0.5vw] items-center">
